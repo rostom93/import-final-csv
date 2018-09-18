@@ -11,12 +11,14 @@ var mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/radio');
+mongoose.connect('mongodb://localhost/radiodb');
 
-require("./models/radio");
+require("./models/Radio");
+require("./models/Item");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+
 
 var app = express();
 
@@ -43,7 +45,7 @@ app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
-  next(createError(404));
+  //next(createError(404));
 });
 
 // error handler

@@ -1,81 +1,120 @@
-var express = require('express');
+var express = require("express");
 
 var csv = require("fast-csv");
 
 var router = express.Router();
-
-var fs = require('fs');
-
-var mongoose = require('mongoose');
-
-var radio  = mongoose.model('radio');
-
-var csvfile = __dirname + "/../public/files/Classeur.csv";
+var parser = require("./parsing");
+var fs = require("fs");
+const urlExists = require("url-exists");
+var mongoose = require("mongoose");
+var csvfile = __dirname + "/../public/files/Classeur316.58.13.csv";
 
 var stream = fs.createReadStream(csvfile);
+var Radio = mongoose.model("Radio");
+var csvtojsonV2 = require("csvtojson");
+var itemsProcessed = 0;
+router.get("/import", function(req, res, next) {
+  csvtojsonV2({
+    delimiter: ";"
+  })
+    .fromFile(csvfile)
+    .then(jsonObj => {
+      jsonObj.forEach(radio => {
+        
+        radioaux = new Radio({
+          cid: radio.cid,
+          new_cid: radio.new_cid,
+          channel_id: radio.channel_id,
+          LANGUAGE: radio.LANGUAGE,
+          title: radio.title,
+          description: radio.description,
+          Provider_id: radio.Provider_id,
+          author: radio.author,
+          release_date: radio.release_date,
+          episode_count: radio.episode_count,
+          play_count: radio.play_count,
+          sub_count: radio.sub_count,
+          comment_count: radio.comment_count,
+          categories: radio.categories,
+          keywords: radio.keywords,
+          tags: radio.tags,
+          rss_url: radio.rss_url,
+          small_cover_url: radio.small_cover_url,
+          big_cover_url: radio.big_cover_url
+        });
+        if (radioaux.release_date == null) {
+          msg = "release_date:does not exsist";
+          radioaux.valid.push({ msg });
+          radioaux.release_date = new Date();
+        } else if (!(radioaux.release_date instanceof Date)) {
+          msg = "release_date:wrong date format";
+            
+          radioaux.valid.push({ msg });
+          radioaux.release_date = new Date();
+        }
 
-var csvtojsonV2=require("csvtojson");
-router.get('/', function(req, res, next) {
-
-  res.render('index', { title: 'Import CSV file using NodeJS' });
-
-}).get('/import', function(req, res, next) {
-
-  var  radio  = []
-  /*var csvConf={
-    header:true,
-    escape:';',
-    quote:";"
-  }
- csv
-    .fromStream(stream, csvConf)
-      .on("data", function(data){
-        console.log(data[0]);
-      })
-        .on("end", function(){
-        });*/
-
-  /*var csvStream = csv()
-      .on("data", function(data){
-       console.log
-       var item = new radio({
-        language: data[0] ,
-        title: data[1],
-        description: data[2],
-        provider_id: data[3],
-        author:data[4] 
-       });
-       
-        item.save(function(error){
-          console.log(item);
-            if(error){
-                 throw error;
+        if (radioaux.rss_url === "") {
+          msg = "rss_url:empty url";
+          radioaux.status=false;
+          radioaux.valid.push({ msg});
+          radioaux.release_date = new Date();
+        } else {
+          urlExists(radioaux.rss_url, function(err, exists) {
+            if (!exists) {
+              msg = "rss_url:wrong url";
+              radioaux.status=false;
+              radioaux.valid.push({ msg });
+              radioaux.release_date = new Date();
             }
-        }); 
-
-  }).on("end", function(){
-
-  });*/
-
- // stream.pipe(csvStream);
- csvtojsonV2({
-  delimiter:';'
-})
-.fromFile(csvfile)
-.then((jsonObj)=>{
-    console.log(jsonObj);
-  res.json({success : "Data imported successfully.", status : 200});
-})
-   
-}).get('/fetchdata', function(req, res, next) {
+          });
+        }
+        Radio.collection.insert(radioaux, function(err, doc) {
+          if (err) {
+            console.log("err trying to save an radio!");
+            return;
+          } else {
+            if(radioaux.status){
+              url = radio.rss_url;
+              id=radio._id;
+              //Parse Xml
+              parser.parsexml({url,id}, function(data) {
+                itemsProcessed++;
+                if(itemsProcessed === jsonObj.length) {
+                  res.send("done");
+                }
+                
+              });
+            }
+           
+            console.log("Done saving the radio!");
+          }
+        });
+      });
+    });
   
-  radio.find({}, function(err, docs) {
-      if (!err){ 
-          res.json({success : "Updated Successfully", status : 200, data: docs});
-      } else { 
-          throw err;
-      }
-  });
-
 });
+router.get("/fetchdata", function(req, res, next) {
+  Radio.find({}, function(err, docs) {
+    if (!err) {
+      res.send(docs);
+    } else {
+      res.send(err);
+    }
+  });
+});
+/*router.get("/importxml", function(req, res, next) {
+  Radio.find( function(err, doc) {
+    if (!err) {
+      var itemsProcessed = 0;
+
+      doc.radio.forEach(radio => {
+      
+      });
+     
+    } else {
+      res.send(err);
+    }
+  });
+});*/
+
 module.exports = router;

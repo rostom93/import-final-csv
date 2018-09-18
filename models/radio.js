@@ -1,29 +1,33 @@
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
-var Items = new Schema({
-    play_count: {type: String },
-    sub_count: {type: String },
-    comment_count: {type: String },
-    categorie:{type: String },
-    keywords:{type: String },
-    tags:{type: String },
-    rss_url:{type: String },
-    small_cover_url:{type: String },
-    big_cover_url:{type: String },
-})
-
 
 var radioSchema = new Schema({
-
-  language:    { type: String},
-  title: { type: String },
-  description: { type: String },
-  provider_id: { type: String},
-  author: { type: String},
-  release_date: { type: String },
-  episode_count: { type: [Items] }
+  cid: String,
+  new_cid: String,
+  channel_id: String,
+  LANGUAGE: String,
+  title:String,
+  description: String,
+  Provider_id: String,
+  author: String,
+  release_date: {type:Date,required:true,default:new Date()},
+  episode_count: Number,
+  play_count: Number,
+  sub_count:Number,
+  comment_count: Number,
+  categories: String,
+  keywords: String,
+  tags: String,
+  rss_url:{
+    type:String ,required:true
+  },
+  small_cover_url:String,
+  big_cover_url: String,
+  valid:[{
+    msg:String
+  }],
+  status:{type:Boolean, default:true}
   
 });
-module.exports = mongoose.model('Items', Items);
-module.exports = mongoose.model('radio', radioSchema);
+module.exports = mongoose.model('Radio', radioSchema);
