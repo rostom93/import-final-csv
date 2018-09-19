@@ -22,7 +22,11 @@ var itemSchema = new Schema({
       duration:String,
       explicit:String,
       image:String,
-      valid: Boolean
+      valid:[{
+            isValid:{type:Boolean,default:true},
+            code :Number,
+            msg:String
+      }]
     
 });
 

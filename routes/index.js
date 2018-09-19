@@ -8,113 +8,121 @@ var fs = require("fs");
 const urlExists = require("url-exists");
 var mongoose = require("mongoose");
 var csvfile = __dirname + "/../public/files/Classeur316.58.13.csv";
-
+var async = require("async");
 var stream = fs.createReadStream(csvfile);
 var Radio = mongoose.model("Radio");
 var csvtojsonV2 = require("csvtojson");
-var itemsProcessed = 0;
+var Item = mongoose.model("Item");
 router.get("/import", function(req, res, next) {
   csvtojsonV2({
     delimiter: ";"
   })
     .fromFile(csvfile)
     .then(jsonObj => {
-      jsonObj.forEach(radio => {
-        
-        radioaux = new Radio({
-          cid: radio.cid,
-          new_cid: radio.new_cid,
-          channel_id: radio.channel_id,
-          LANGUAGE: radio.LANGUAGE,
-          title: radio.title,
-          description: radio.description,
-          Provider_id: radio.Provider_id,
-          author: radio.author,
-          release_date: radio.release_date,
-          episode_count: radio.episode_count,
-          play_count: radio.play_count,
-          sub_count: radio.sub_count,
-          comment_count: radio.comment_count,
-          categories: radio.categories,
-          keywords: radio.keywords,
-          tags: radio.tags,
-          rss_url: radio.rss_url,
-          small_cover_url: radio.small_cover_url,
-          big_cover_url: radio.big_cover_url
-        });
-        if (radioaux.release_date == null) {
-          msg = "release_date:does not exsist";
-          radioaux.valid.push({ msg });
-          radioaux.release_date = new Date();
-        } else if (!(radioaux.release_date instanceof Date)) {
-          msg = "release_date:wrong date format";
-            
-          radioaux.valid.push({ msg });
-          radioaux.release_date = new Date();
-        }
-
-        if (radioaux.rss_url === "") {
-          msg = "rss_url:empty url";
-          radioaux.status=false;
-          radioaux.valid.push({ msg});
-          radioaux.release_date = new Date();
-        } else {
-          urlExists(radioaux.rss_url, function(err, exists) {
-            if (!exists) {
-              msg = "rss_url:wrong url";
-              radioaux.status=false;
-              radioaux.valid.push({ msg });
-              radioaux.release_date = new Date();
-            }
+      var count=0;
+        async.forEachOf(jsonObj, (radio,key, callback) => {
+          
+          radioaux = new Radio({
+            cid: radio.cid,
+            new_cid: radio.new_cid,
+            channel_id: radio.channel_id,
+            LANGUAGE: radio.LANGUAGE,
+            title: radio.title,
+            description: radio.description,
+            Provider_id: radio.Provider_id,
+            author: radio.author,
+            release_date: radio.release_date,
+            episode_count: radio.episode_count,
+            play_count: radio.play_count,
+            sub_count: radio.sub_count,
+            comment_count: radio.comment_count,
+            categories: radio.categories,
+            keywords: radio.keywords,
+            tags: radio.tags,
+            rss_url: radio.rss_url,
+            small_cover_url: radio.small_cover_url,
+            big_cover_url: radio.big_cover_url
           });
-        }
-        Radio.collection.insert(radioaux, function(err, doc) {
-          if (err) {
-            console.log("err trying to save an radio!");
-            return;
+          // verify date
+          if (radioaux.release_date == null) {
+            msg = "release_date:does not exsist";
+            radioaux.valid.push({ msg });
+            radioaux.release_date = new Date();
+          } else if (!(radioaux.release_date instanceof Date)) {
+            msg = "release_date:wrong date format";
+              
+            radioaux.valid.push({ msg });
+            radioaux.release_date = new Date();
+          }
+          // verify url
+          if (radioaux.rss_url === "") {
+            msg = "rss_url:empty url";
+            radioaux.status=false;
+            radioaux.valid.push({ msg});
           } else {
-            if(radioaux.status){
-              url = radio.rss_url;
-              id=radio._id;
-              //Parse Xml
-              parser.parsexml({url,id}, function(data) {
-                itemsProcessed++;
-                if(itemsProcessed === jsonObj.length) {
-                  res.send("done");
-                }
+            urlExists(radioaux.rss_url, function(err, exists) {
+              if (!exists) {
+                msg = "rss_url:wrong url";
+                radioaux.status=false;
+                radioaux.valid.push({ msg });
+              }
+            });
+          }
+  
+  
+          // saving the radio
+          const url = radioaux.rss_url;
+          const id=radioaux._id;
+          const status=radioaux.status;
+          Radio.collection.insert(radioaux, function(err, doc) {
+            if (err) {
+              console.log("err trying to save an radio!");
+              callback();
+            } else {
+              callback();
+              if(count < jsonObj.length){
                 
-              });
+              if(status){
+                console.log("calling the parsexml function");
+               
+                //Parse Xml
+               
+                  parser.parsexml({url,id}, function(data) {
+                  });
+                  
+                }
+                count++;
+                
+              }
+              else{
+               return;
+              }
+             
+              console.log("Done saving the radio!");
+              
             }
            
-            console.log("Done saving the radio!");
-          }
+           
+          });
         });
+      }, err => {
+          if (err) console.error(err.message);
+          callback();
       });
-    });
+       
+    
   
 });
-router.get("/fetchdata", function(req, res, next) {
-  Radio.find({}, function(err, docs) {
-    if (!err) {
-      res.send(docs);
-    } else {
-      res.send(err);
-    }
-  });
-});
-/*router.get("/importxml", function(req, res, next) {
-  Radio.find( function(err, doc) {
-    if (!err) {
-      var itemsProcessed = 0;
 
-      doc.radio.forEach(radio => {
-      
-      });
+router.get("/getItemsByRadio/:id", function(req, res, next) {
+  Item.find({radio: req.params.id}, function(err, doc) {
+    if (!err) {
+      res.send(doc);
      
     } else {
       res.send(err);
     }
   });
-});*/
+});
 
 module.exports = router;
