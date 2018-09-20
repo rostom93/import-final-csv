@@ -26,7 +26,6 @@ router.get("/import", function(req, res, next) {
            // saving & creating the radio
           radioaux = verify.verifyAndCreateRadio(radio);
           if (radioaux) {
-           // try to verify the url from here
             const url = radioaux.rss_url;
             const id = radioaux._id;
             const status = radioaux.status;

@@ -3,6 +3,7 @@ var mongoose = require("mongoose");
 var Item = mongoose.model("Item");
 const urlExists = require("url-exists");
 
+var verify = require("./verification");
 
 
 // verification of a valid and an audio/video URL
@@ -99,6 +100,7 @@ module.exports.verifEnclosure = function(enclosure) {
 // verify and create the item
 module.exports.verifyAndCreateItem = function(it) {
   item = new Item();
+  it=verify.removeItunes(it);
   if (this.isEmpty(it.title)) {
     item.title = "";
     item.errorsMsg.push({

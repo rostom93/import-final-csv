@@ -35,6 +35,27 @@ module.exports.verifyDate = function(date, callback) {
     return null;
   };
   
+
+// remove itunes if exsists
+module.exports.removeItunes = function(it) {
+    var keys = Object.keys(it);
+    for (var i = 0; i < keys.length; i++) {
+      var s = keys[i].split(":");
+  
+      if (s.length > 1) {
+        var newkey = s[s.length - 1];
+        var deletedkey = keys[i];
+  
+        Object.defineProperty(
+          it,
+          newkey,
+          Object.getOwnPropertyDescriptor(it, deletedkey)
+        );
+        delete it[deletedkey];
+      }
+    }
+    return it;
+  };
 // verification of a valid and an audio/video URL
 module.exports.verifyUrl = function(url, callback) {
     errorsMsg = null;
@@ -70,6 +91,8 @@ module.exports.verifyAndCreateRadio = function(jsonRadio, callback) {
 
   radio = new Radio();
 
+  jsonRadio=this.removeItunes(jsonRadio);
+  
   if (this.isEmpty(jsonRadio.cid)) {
     radio.cid = "";
     radio.errorsMsg.push({
@@ -160,6 +183,8 @@ module.exports.verifyAndCreateRadio = function(jsonRadio, callback) {
     });
     radio.valid = false;
   } else {
+      console.log(jsonRadio.rss_url)
+      console.log(jsonRadio.categories)
     radio.categories = jsonRadio.categories;
   }
 
