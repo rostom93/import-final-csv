@@ -186,7 +186,6 @@ module.exports.verifyAndCreateItem = function(it) {
       code: "27",
       msg: "the item does not specify explicit"
     });
-    item.valid = false;
   } else {
     item.explicit = it.explicit[0];
   }
@@ -196,7 +195,6 @@ module.exports.verifyAndCreateItem = function(it) {
       code: "277",
       msg: "the item does not specify subtitle"
     });
-    item.valid = false;
   } else {
     item.subtitle = it.subtitle[0];
   }

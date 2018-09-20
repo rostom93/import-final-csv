@@ -23,31 +23,26 @@ router.get("/import", function(req, res, next) {
       jsonObj => {
         var count = 0;
         async.forEachOf(jsonObj, (radio, key, callback) => {
-           // saving & creating the radio
+         
+          // saving & creating the radio
           radioaux = verify.verifyAndCreateRadio(radio);
           if (radioaux) {
+            count++;
             const url = radioaux.rss_url;
             const id = radioaux._id;
-            const status = radioaux.status;
             Radio.collection.insert(radioaux, function(err, doc) {
               if (err) {
                 console.log("err trying to save an radio!");
                 callback();
               } else {
-                
-                if (count < jsonObj.length) {
-                    parser.parsexml({ url, id }, function(data) {});
-                 
-                  count++;
-                } else {
-                  return;
-                }
+               
+                  parser.parsexml({ url, id }, function(data) {});
+
                 callback();
                 console.log("Done saving the radio!");
               }
             });
-          }
-          else{
+          } else {
             console.log("the file is empty");
             radioaux.errorsMsg.push({
               code: "30",
@@ -57,15 +52,10 @@ router.get("/import", function(req, res, next) {
             Radio.collection.insert(radioaux, function(err, doc) {
               if (err) {
                 console.log("err trying to save an radio!");
-                
               } else {
                 res.send("done");
               }
             });
-          }
-          if(count >= jsonObj.length)
-          {
-            res.send("done")
           }
         });
       },
@@ -73,7 +63,6 @@ router.get("/import", function(req, res, next) {
         if (err) console.error(err.message);
         callback();
       }
-      
     );
 });
 

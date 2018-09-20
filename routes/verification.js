@@ -99,7 +99,6 @@ module.exports.verifyAndCreateRadio = function(jsonRadio, callback) {
       code: "31",
       msg: "the radio does not specify the cid"
     });
-    radio.valid = false;
   } else {
     radio.cid = jsonRadio.cid;
   }
@@ -110,7 +109,6 @@ module.exports.verifyAndCreateRadio = function(jsonRadio, callback) {
       code: "32",
       msg: "the radio does not specify the new_cid"
     });
-    radio.valid = false;
   } else {
     radio.new_cid = jsonRadio.new_cid;
   }
@@ -121,7 +119,6 @@ module.exports.verifyAndCreateRadio = function(jsonRadio, callback) {
       code: "33",
       msg: "the radio does not specify the channel_id"
     });
-    radio.valid = false;
   } else {
     radio.channel_id = jsonRadio.channel_id;
   }
@@ -161,7 +158,6 @@ module.exports.verifyAndCreateRadio = function(jsonRadio, callback) {
       code: "37",
       msg: "the radio does not specify the Provider_id"
     });
-    radio.valid = false;
   } else {
     radio.Provider_id = jsonRadio.Provider_id;
   }
@@ -241,10 +237,44 @@ module.exports.verifyAndCreateRadio = function(jsonRadio, callback) {
   } else {
     radio.big_cover_url = jsonRadio.big_cover_url;
   }
-  radio.episode_count=jsonRadio.episode_count;
-  radio.play_count=jsonRadio.play_count;
-  radio.sub_count=jsonRadio.sub_count;
-  radio.comment_count=jsonRadio.comment_count;
+  if (this.isEmpty(jsonRadio.episode_count)) {
+    radio.episode_count = "";
+    radio.errorsMsg.push({
+      code: "3144",
+      msg: "the radio does not specify the episode_count"
+    });
+  }else {
+    radio.episode_count=jsonRadio.episode_count;
+  }
+  if (this.isEmpty(jsonRadio.play_count)) {
+    radio.play_count= "";
+    radio.errorsMsg.push({
+      code: "3145",
+      msg: "the radio does not specify the play_count"
+    });
+  }else {
+    radio.play_count=jsonRadio.play_count;
+  }
+  
+  if (this.isEmpty(jsonRadio.sub_count)) {
+    radio.sub_count= "";
+    radio.errorsMsg.push({
+      code: "3146",
+      msg: "the radio does not specify the sub_count"
+    });
+  }else {
+    radio.sub_count=jsonRadio.sub_count;
+  }
+  if (this.isEmpty(jsonRadio.comment_count)) {
+    radio.comment_count= "";
+    radio.errorsMsg.push({
+      code: "3146",
+      msg: "the radio does not specify the comment_count"
+    });
+  }else {
+    radio.comment_count=jsonRadio.comment_count;
+  }
+  
 
   return radio;
 };

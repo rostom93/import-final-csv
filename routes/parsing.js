@@ -20,7 +20,6 @@ module.exports.parsexml = function({ url, id }, callback) {
   } else {
     request(url, function(error, response, body) {
       if (typeof body === "undefined" || body === "") {
-        console.log(body)
         console.log(url)
         console.log("Url does not provide any elements");
         Radio.findById(id, function(err, radio) {
