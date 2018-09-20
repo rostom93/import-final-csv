@@ -15,6 +15,7 @@ var itemSchema = new Schema({
     type: { type: String }
   },
   author: String,
+  subtitle:String,
   guid: String,
   radio: { type: Schema.Types.ObjectId, ref: "Radio" },
   subtitle: String,

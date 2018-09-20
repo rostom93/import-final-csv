@@ -151,6 +151,16 @@ module.exports.verifyAndCreateItem = function(it) {
   } else {
     item.guid = it.guid[0];
   }
+  if (this.isEmpty(it.category)) {
+    item.category = "";
+    item.errorsMsg.push({
+      code: "2440",
+      msg: "the item does not have a category"
+    });
+    item.valid = false;
+  } else {
+    item.category = it.category[0];
+  }
   if (this.isEmpty(it.summary)) {
     item.summary = "";
     item.errorsMsg.push({
@@ -179,6 +189,16 @@ module.exports.verifyAndCreateItem = function(it) {
     item.valid = false;
   } else {
     item.explicit = it.explicit[0];
+  }
+  if (this.isEmpty(it.subtitle)) {
+    item.subtitle = "";
+    item.errorsMsg.push({
+      code: "277",
+      msg: "the item does not specify subtitle"
+    });
+    item.valid = false;
+  } else {
+    item.subtitle = it.subtitle[0];
   }
   if (this.isEmpty(it.image)) {
     item.image = "";
