@@ -24,10 +24,13 @@ var radioSchema = new Schema({
   },
   small_cover_url:String,
   big_cover_url: String,
-  valid:[{
-    msg:String
-  }],
-  status:{type:Boolean, default:true}
+  valid: { type: Boolean, default: true, required: true },
+  errorsMsg: [
+    {
+      code: Number,
+      msg: String
+    }
+  ],
   
 });
 module.exports = mongoose.model('Radio', radioSchema);
