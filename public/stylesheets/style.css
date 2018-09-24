@@ -68,4 +68,7 @@ table tr td{
   background:#c9e8f7;
   position:relative;
 }
+#listofradios,#listitems{
+  display: none;
+}
 

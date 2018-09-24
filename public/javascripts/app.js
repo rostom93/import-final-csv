@@ -17,21 +17,24 @@ $(function() {
       document.getElementById("uploadfile").disabled = true;
     }
   });
- 
-  $("#fetchdata").on('click', function() {
-    $("#tableitem").hide();
+
+  $("#fetchdata").on("click", function() {
     $(".se-pre-con").show();
+    $("#tableitem").hide();
+    $("#messagee").hide();
+    $("#return").show();
     $.get("/showcsv/list", function(data) {
-      
-      var radios = data['data'];
-     
+      var radios = data["data"];
+
       // creating a string that will have all the data provided by the /fetchdata
       var string = "";
       $.each(radios, function(index, radio) {
         string +=
-          "<tr id='radio'><td><a id='show' href='javascript:void(0)' onclick=\"showItems('"+radio["_id"]+"')\">" +
+          "<tr title='Click to view list of items' id='radio' onclick=\"showItems('" +
+          radio["_id"] +
+          "')\"><td>" +
           (index + 1) +
-          "</a></td><td>" +
+          "</td><td>" +
           radio["title"] +
           "</td><td>" +
           radio["author"] +
@@ -51,41 +54,51 @@ $(function() {
       $("#table").show();
     });
   });
-  
-  
 });
 function showItems(id) {
-  $('#table').hide();
+  $("#table").hide();
+  $("#listradio").hide();
+  $("#listitems").show();
+  $("#return").hide();
+
   $(".se-pre-con").show();
-  $.get("/showcsv/show/"+id, function(data) {
-      
-    var items = data['data'];
-   
-    // creating a string that will have all the data provided by the /fetchdata
-    var string = "";
-    $.each(items, function(index, item) {
-      string +=
-        "<tr id='radio'><td>" +
-        (index + 1) +
-        "</td><td>" +
-        item["title"] +
-        "</td><td>" +
-        item["pubDate"] +
-        "</td><td>" +
-        item["duration"] +
-        "</td><td>" +
-        item["description"] +
-        "</td><td>" +
-        item["summary"] +
-        "</td><td>" +
-        item["subtitle"] +
-        "</td></tr>";
-    });
-    // filling in the trdata with the string
-    $("#trdataitem").html(string);
-    $(".se-pre-con").hide();
-    $("#tableitem").show();
+  $.get("/showcsv/show/" + id, function(data) {
+    var items = data["data"];
+    console.log(items);
+    if (items.length == 0) {
+      $(".se-pre-con").hide();
+      $("#messagee")
+        .show()
+        .html("this radio does not have any items ");
+    } else {
+      $("#messagee").hide();
+      // creating a string that will have all the data provided by the /fetchdata
+      var string = "";
+      $.each(items, function(index, item) {
+        string +=
+          "<tr><td>" +
+          (index + 1) +
+          "</td><td>" +
+          item["title"] +
+          "</td><td>" +
+          item["pubDate"] +
+          "</td><td>" +
+          item["duration"] +
+          "</td><td>" +
+          item["description"] +
+          "</td><td>" +
+          item["summary"] +
+          "</td><td>" +
+          item["subtitle"] +
+          "</td></tr>";
+      });
+      // filling in the trdata with the string
+      $("#trdataitem").html(string);
+      $(".se-pre-con").hide();
+      $("#tableitem").show();
+      $("#listofradios").show();
+    }
   });
-  
-  console.log(id)
-};
+
+  console.log(id);
+}

@@ -3,13 +3,17 @@ extends layout
 block content
   .main.container
     .row
-        h1.display-4.m-b-2 List of radios
+        h1.display-4.m-b-2#listradio List of radios
+        h1.display-4.m-b-2#listitems List of items
 
-    a(href='javascript:void(0)' class='btn btn-primary' id='return') contenu uploading 
+    a(href='/' class='btn btn-primary' id='return') contenu uploading 
     | &nbsp;&nbsp;&nbsp;
-    a(href='javascript:void(0)' class='btn btn-primary' id='fetchdata') View current data
+    a(href='javascript:void(0)' class='btn btn-primary' id='fetchdata') View list of radios
     | &nbsp;&nbsp;&nbsp;
+    br
+    br
     div(class='se-pre-con') please wait while we fetch the data
+    p#messagee.alert.alert-danger(style='display:none')
     br
     br
     table.table.table-bordered#table
