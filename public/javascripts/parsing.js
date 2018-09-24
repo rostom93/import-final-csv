@@ -13,13 +13,15 @@ var Item = mongoose.model("Item");
 const https = require("https");
 var i = 0;
 module.exports.parsexml = function(url, id) {
+  
   if (verify.verifyUrl(url) !== null) {
     return;
   } else {
     request(url, function(error, response, body) {
       if (typeof body === "undefined" || body === "") {
+        console.log(url, " this is an empty radio");
         Radio.findById(id, function(err, radio) {
-          if (!radio) return next(new Error("Could not load radio"));
+          if (err) console.log(err)
           else {
             // do your updates here
             radio.errorsMsg.push({
@@ -36,29 +38,31 @@ module.exports.parsexml = function(url, id) {
       } else {
         parser.parseString(body, function(err, result) {
           if (!err) {
-            if (typeof result["rss"] !== "undefined" && result["rss"]) {
-              if (result["rss"] != null) {
+            if (
+              typeof result["rss"] !== "undefined" &&
+              result["rss"] !== null
+            ) {
+              if (result["rss"] !== null) {
                 var channel = result["rss"]["channel"];
-                if (typeof channel[0].item != "undefined" && channel[0].item) {
+                if (
+                  typeof channel[0].item !== "undefined" &&
+                  channel[0].item !== null
+                ) {
                   itemslength = channel[0].item.length;
-                  console.log(id," this url have ");
-                  console.log(itemslength);
-                  
+                  console.log(id, " this url have ",itemslength);
+
                   channel[0].item.forEach(it => {
-                   
-                      xmlitem = verifyitem.verifyAndCreateItem(it);
-                      // saving the items
-                      xmlitem.radio = id;
-                      Item.collection.insertOne(xmlitem, function(err, doc) {
-                        
-                        if (err) {
-                          console.log(err);
-                        } else {
-                          //done saving an item
-                          return;
-                        }
-                      });
-                   
+                    xmlitem = verifyitem.verifyAndCreateItem(it);
+                    // saving the items
+                    xmlitem.radio = id;
+                    Item.collection.insertOne(xmlitem, function(err, doc) {
+                      if (err) {
+                        console.log(err);
+                      } else {
+                        //done saving an item
+                        return;
+                      }
+                    });
                   });
                 } else {
                   Radio.findById(id, function(err, radio) {
@@ -101,4 +105,3 @@ module.exports.parsexml = function(url, id) {
     });
   }
 };
-

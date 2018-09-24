@@ -37,6 +37,7 @@ var stream = fs.createReadStream(csvfile);
       .fromFile(csvfile)
       .then(
         jsonObj => {
+          var i=0
           async.forEachSeries(jsonObj, (radio, callback) => {
             // saving & creating the radio
             radioaux = verify.verifyAndCreateRadio(radio);
@@ -46,6 +47,8 @@ var stream = fs.createReadStream(csvfile);
               Radio.collection.insertOne(radioaux, function(err, doc) {
                 if (err) {
                   console.log("err trying to save an radio!");
+                  console.log(i)
+                  i++;
                   callback();
                 } else {
                   parser.parsexml(url, id);
