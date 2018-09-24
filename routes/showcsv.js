@@ -5,8 +5,8 @@ var Radio = mongoose.model("Radio");
 
 
 router.get('/', function(req, res, next) {
-    
-  }).get('/list',function(){
+    res.render('showcsv', { title: 'list of radios' });
+  }).get('/list',function(req, res, next){
     Radio.find({}, function(err, docs) {
         if (!err){ 
             res.json({success : "fetch Successfully", status : 200, data: docs});
