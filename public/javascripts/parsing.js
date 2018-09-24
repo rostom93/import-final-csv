@@ -12,29 +12,6 @@ var verifyitem = require("./verifItem");
 var Item = mongoose.model("Item");
 const https = require("https");
 var i = 0;
-let retry = (function() {
-  let count = 0;
-
-  return function(url,max, timeout, next) {
-    request(url, function (error, response, body) {
-      if (error || response.statusCode !== 200) {
-        
-
-        if (count++ < max) {
-          return setTimeout(function() {
-            retry(max, timeout, next);
-          }, timeout);
-        } else {
-          console.log('fail', url);
-          return(null);
-        }
-      }
-
-      console.log('success');
-      next(null, body);
-    });
-  }
-})();
 
 
 module.exports.parsexml = function(urle, id) {
