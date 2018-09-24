@@ -17,8 +17,9 @@ $(function() {
       document.getElementById("uploadfile").disabled = true;
     }
   });
-
+ 
   $("#fetchdata").on('click', function() {
+    $("#tableitem").hide();
     $(".se-pre-con").show();
     $.get("/showcsv/list", function(data) {
       
@@ -28,16 +29,16 @@ $(function() {
       var string = "";
       $.each(radios, function(index, radio) {
         string +=
-          "<tr><td>" +
+          "<tr id='radio'><td><a id='show' href='javascript:void(0)' onclick=\"showItems('"+radio["_id"]+"')\">" +
           (index + 1) +
-          "</td><td>" +
+          "</a></td><td>" +
           radio["title"] +
           "</td><td>" +
           radio["author"] +
           "</td><td>" +
           radio["release_date"] +
           "</td><td>" +
-          radio["category"] +
+          radio["categories"] +
           "</td><td>" +
           radio["description"] +
           "</td><td>" +
@@ -50,4 +51,41 @@ $(function() {
       $("#table").show();
     });
   });
+  
+  
 });
+function showItems(id) {
+  $('#table').hide();
+  $(".se-pre-con").show();
+  $.get("/showcsv/show/"+id, function(data) {
+      
+    var items = data['data'];
+   
+    // creating a string that will have all the data provided by the /fetchdata
+    var string = "";
+    $.each(items, function(index, item) {
+      string +=
+        "<tr id='radio'><td>" +
+        (index + 1) +
+        "</td><td>" +
+        item["title"] +
+        "</td><td>" +
+        item["pubDate"] +
+        "</td><td>" +
+        item["duration"] +
+        "</td><td>" +
+        item["description"] +
+        "</td><td>" +
+        item["summary"] +
+        "</td><td>" +
+        item["subtitle"] +
+        "</td></tr>";
+    });
+    // filling in the trdata with the string
+    $("#trdataitem").html(string);
+    $(".se-pre-con").hide();
+    $("#tableitem").show();
+  });
+  
+  console.log(id)
+};

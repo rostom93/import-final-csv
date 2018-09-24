@@ -53,6 +53,19 @@ div {
   font-weight: 500;
   text-align: center
 }
-#table{
+tableitem,table{
   display: none;
+  max-width: 100%;
 }
+table tr td{
+  width: auto;
+}
+#radio{
+  cursor: pointer;
+}
+#radio:hover{
+
+  background:#c9e8f7;
+  position:relative;
+}
+
