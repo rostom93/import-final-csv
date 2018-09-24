@@ -1,45 +1,15 @@
 extends layout
 
 block content
+  .main.container
+    .row
+        h1.display-4.m-b-2 Csv file upload
 
-  br
-
-  h2 Import CSV file using NodeJS and MongoDB
-
-  br
-
-  p
-
-   a(href='javascript:void(0)' class='btn btn-primary' id='importdata') Import CSV 
-   | &nbsp;&nbsp;&nbsp;
-   a(href='javascript:void(0)' class='btn btn-primary' id='fetchdata') Fetch Data
-
-  br  
-
-  p#message.alert.alert-success(style='display:none')
-
-  br
-
-  table.table.table-bordered
-
-    thead
-
-        tr
-
-            th #
-
-            th radio language
-
-            th title 
-
-            th description
-
-            th prov
-
-            th author
-
-    tbody#trdata
-
-        tr
-
-            td(colspan='6') Click on <strong>Import CSV</strong> button to import and save data to MongoDB. <br />Click on <strong>Fetch Data</strong> button to display data from database
+        form#myForm(method='post' enctype='multipart/form-data')
+            label(for='inputfile', class='labelfile') Choose a file
+                input#inputfile(type='file', class="inputfile",name='inputfile')
+            | &nbsp;&nbsp;&nbsp;
+            input#uploadfile(type='submit',class="uploadfile", name='uploadfile',value="start uploading", disabled) 
+        p#messages.alert.alert-success(style='display:none')
+        p#messagee.alert.alert-danger(style='display:none')
+    

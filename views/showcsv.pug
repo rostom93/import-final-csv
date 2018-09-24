@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  .main.container
+    .row
+        h1.display-4.m-b-2 List of radios
+
+    a(href='javascript:void(0)' class='btn btn-primary' id='return') contenu uploading 
+    | &nbsp;&nbsp;&nbsp;
+    a(href='javascript:void(0)' class='btn btn-primary' id='fetchdata') View current data
+    | &nbsp;&nbsp;&nbsp;
+    
+    table.table.table-bordered
+
+        thead
+
+            tr
+                th #
+
+                th Title
+
+                th Author
+
+                th Release date
+
+                th category
+
+                th Description
+
+                th keywords
+
+        tbody#trdata
+
+           

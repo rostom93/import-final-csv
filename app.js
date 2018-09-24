@@ -8,7 +8,6 @@ var session = require('express-session');
 var flash = require('connect-flash');
 
 var mongoose = require('mongoose');
-
 mongoose.Promise = global.Promise;
 
 mongoose.connect('mongodb://localhost/radiodb');
@@ -18,7 +17,9 @@ require("./models/Item");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var csvRouter = require('./routes/showcsv');
 
+var multer = require("multer");
 
 var app = express();
 
@@ -42,7 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-
+app.use('/showcsv', csvRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   //next(createError(404));
@@ -59,4 +60,5 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+var upload = multer({ dest: 'files/' })
 module.exports = app;
