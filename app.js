@@ -10,10 +10,11 @@ var flash = require('connect-flash');
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://localhost/radiodb');
+mongoose.connect('mongodb://localhost/programDatabase');
 
 require("./models/Radio");
 require("./models/Item");
+require("./models/Channel");
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

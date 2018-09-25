@@ -1,6 +1,8 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
 const radio = require("./Radio");
+const channel = require("./Channel");
+
 require("mongoose-type-url");
 
 var itemSchema = new Schema({
@@ -18,6 +20,7 @@ var itemSchema = new Schema({
   subtitle:String,
   guid: String,
   radio: { type: Schema.Types.ObjectId, ref: "Radio" },
+  channel: { type: Schema.Types.ObjectId, ref: "Channel" },
   summary: String,
   keywords: String,
   duration: String,

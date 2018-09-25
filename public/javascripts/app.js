@@ -54,7 +54,36 @@ $(function() {
       $("#table").show();
     });
   });
+  $("input[name=xmlurl]").on("input", function() {
+    var urlinput = document.getElementById("xmlurl").value;
+
+    if (
+      urlinput === "" ||
+      urlinput === null ||
+      urlinput.length == 0 ||
+      urlinput.length < 8
+    )
+      document.getElementById("parseXml").disabled = true;
+    else {
+      document.getElementById("parseXml").disabled = false;
+    }
+  });
+  $("#parseXml").on("click", function() {
+    var url = document.getElementById("xmlurl").value;
+    console.log(url);
+    fetch(url).then(function(data2) {
+      $.ajax({
+        type: 'post',
+        data:{url:data2.url},
+        url: '/importxml',	
+        success: function (data) {
+          console.log('success');
+        }
+     });
+    });
+  });
 });
+
 function showItems(id) {
   $("#table").hide();
   $("#listradio").hide();

@@ -1,6 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  text-align: center
 }
 
 div {
@@ -29,18 +30,24 @@ div {
   z-index: -1;
   
 }
-.uploadfile:disabled{
+.uploadfile:disabled,.parseXml:disabled{
   opacity: 0.3; 
   cursor: not-allowed;
 }
-.uploadfile{
+.uploadfile,.parseXml{
   font-size: 1.25em;
   font-weight: 700;
   color: white;
-  background-color: #E4022C;
+  
   display: inline-block;
   padding: 10px;
   border-radius: 10px;
+}
+.uploadfile{
+  background-color: #E4022C;
+}
+.parseXml{
+  background-color: rgb(2, 228, 134);
 }
 
 .se-pre-con {

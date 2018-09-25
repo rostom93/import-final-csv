@@ -17,9 +17,12 @@ var i = 0;
 module.exports.parsexml = function(urle, id) {
   var url=encodeURI(urle);
   if (verify.verifyUrl(url) !== null) {
-    return;}
+    console.log(url, " this is an unvalid url");
+    return;
+  }
     else{
-      request(url, function (error, response, body) {
+      request({url:url, followAllRedirects: true},
+        function (error, response, body) {
         if (typeof body === "undefined" || body === null) {
           console.log(url, " this is an empty radio");
           Radio.findById(id, function(err, radio) {

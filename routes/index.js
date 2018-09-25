@@ -6,9 +6,12 @@ var verify = require("../public/javascripts/verification");
 var router = express.Router();
 var parser = require("../public/javascripts/parsing");
 var fs = require("fs");
-const urlExists = require("url-exists");
 var mongoose = require("mongoose");
+var request = require("request");
 
+var Channel = mongoose.model("Channel");
+var xml2js = require("xml2js");
+var parser = new xml2js.Parser();
 var async = require("async");
 var Radio = mongoose.model("Radio");
 var csvtojsonV2 = require("csvtojson");
@@ -80,8 +83,70 @@ var stream = fs.createReadStream(csvfile);
         }
       );
       res.redirect("/showcsv");
+  }).post("/importxml", function(req, res, next) {
+    console.log("parsing the xml file");
+    var url=encodeURI(req.body.url)
+    console.log(url)
+    //parsing the xml
+    request({url:url, followAllRedirects: true},
+      function (error, response, text) {
+      if (error) {
+        throw error;
+      } else {
+        parser.parseString(text, function(err, result) {
+          if (err) {
+            console.log(err);
+          } else {
+            if (verify.verifyChannel(result)) {
+              var channel = result["rss"]["channel"];
+              channel.valid = true;
+              xmlchannel = verify.verifyAndCreateChannel(channel);
+              if (verify.verifyItemExsist(channel)) {
+                channel[0].item.forEach(it => {
+                  xmlitems = verify.verifyAndCreateItem(it);
+                  xmlitems.channel=xmlchannel._id;
+                  //saving the item
+                  Item.collection.insert(xmlitems, function(err, doc) {
+                    if (err) {
+                      console.log("err trying to save an item!");
+                      return;
+                    } else {
+                      console.log("Done saving the items!");
+                    }
+                  });
+                });
+              } else {
+                xmlchannel.valid = false;
+                errorsMsg = {
+                  code: "100",
+                  msg: "Channel does not have any item"
+                };
+                xmlchannel.errorsMsg.push(errorsMsg);
+              }
+            } else {
+              xmlchannel = new Channel();
+              xmlchannel.valid = false;
+              errorsMsg = {
+                code: "10",
+                msg: "Channel does not exsist"
+              };
+              xmlchannel.errorsMsg.push(errorsMsg);
+            }
+            Channel.collection.insert(xmlchannel, function(err, doc) {
+              if (err) {
+                console.log("err trying to save the channel!");
+                return;
+              } else {
+                console.log("Done saving the channel");
+                res.send("done saving the channel");
+              }
+            });
+          }
+        });
+      }
+    });
   });
-router.post("/", upload.single("inputfile"), function(req, res) {
+  router.post("/", upload.single("inputfile"), function(req, res) {
   res.redirect("/import");
 });
 
