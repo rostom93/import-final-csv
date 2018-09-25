@@ -16,7 +16,7 @@ var i = 0;
 
 module.exports.parsexml = function(urle, id) {
   var url=encodeURI(urle);
-  if (verify.verifyUrl(url) !== null) {
+  if (verify.verifyUrlcsv(url) !== null) {
     console.log(url, " this is an unvalid url");
     return;
   }

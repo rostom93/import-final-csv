@@ -19,6 +19,7 @@ require("./models/Channel");
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var csvRouter = require('./routes/showcsv');
+var xmlRouter = require('./routes/showxml');
 
 var multer = require("multer");
 
@@ -45,6 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/showcsv', csvRouter);
+app.use('/showxml', xmlRouter);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   //next(createError(404));

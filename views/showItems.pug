@@ -1,0 +1,40 @@
+extends layout
+
+block content
+  .main.container
+    .row
+        h1.display-4.m-b-2#listitem List of Items
+    a#csvlink(href="/showcsv") return
+    a#xmllink(href="/showxml") return
+    br
+    table.table.table-bordered#table
+
+        thead
+
+            tr
+                th #
+
+                th Title
+
+                th Author
+
+                th Release date
+
+                th category
+
+                th Description
+
+                th keywords
+        if items.length
+        each item, i in items
+            tr.showitem(id=item['_id'])
+                td #{i+1}
+                td #{item['title']}
+                td #{item['author']}
+                td #{item['pubDate']}
+                td #{item['category']}
+                td #{item['description']}
+                td #{item['keywords']}
+        
+                       
+    

@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  .main.container
+    .row
+        h1.display-4.m-b-2#listradio List of channels
+    
+    table.table.table-bordered#table
+
+        thead
+
+            tr
+                th #
+
+                th Title
+
+                th Author
+
+                th Publication date
+
+                th Description
+
+                th summary
+        if channels.length
+        each channel, i in channels
+            tr.showitemxml(id=channel['_id'])
+                td #{i+1}
+                td #{channel['title']}
+                td #{channel['author']}
+                td #{channel['pubDate']}
+                td #{channel['description']}
+                td #{channel['summary']}
+        
+                       
+    

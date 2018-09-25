@@ -3,19 +3,8 @@ extends layout
 block content
   .main.container
     .row
-        h1.display-4.m-b-2#listradio List of radios
-        h1.display-4.m-b-2#listitems List of items
-
-    a(href='/' class='btn btn-primary' id='return') contenu uploading 
-    | &nbsp;&nbsp;&nbsp;
-    a(href='javascript:void(0)' class='btn btn-primary' id='fetchdata') View list of radios
-    | &nbsp;&nbsp;&nbsp;
-    br
-    br
-    div(class='se-pre-con') please wait while we fetch the data
-    p#messagee.alert.alert-danger(style='display:none')
-    br
-    br
+        h1.display-4.m-b-2#listradio List of channels
+    
     table.table.table-bordered#table
 
         thead
@@ -34,27 +23,16 @@ block content
                 th Description
 
                 th keywords
-
-        tbody#trdata
-    table.table.table-bordered#tableitem
-
-        thead
-
-            tr
-                th #
-
-                th Title
-
-                th Publication date
-
-                th Duration
-
-                th Description
-
-                th Summary
-
-                th Subtitle
-
-        tbody#trdataitem
-
-           
+        if radios.length
+        each radio, i in radios
+            tr.showitemcsv(id=radio['_id'])
+                td #{i+1}
+                td #{radio['title']}
+                td #{radio['author']}
+                td #{radio['release_date']}
+                td #{radio['categories']}
+                td #{radio['description']}
+                td #{radio['keywords']}
+        
+                       
+    

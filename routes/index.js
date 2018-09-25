@@ -4,7 +4,7 @@ var csv = require("fast-csv");
 
 var verify = require("../public/javascripts/verification");
 var router = express.Router();
-var parser = require("../public/javascripts/parsing");
+var parse = require("../public/javascripts/parsing");
 var fs = require("fs");
 var mongoose = require("mongoose");
 var request = require("request");
@@ -32,15 +32,15 @@ router
   })
   .get("/import", function(req, res, next) {
     var csvfile = __dirname + "/../public/files/file.csv";
-    
-var stream = fs.createReadStream(csvfile);
+
+    var stream = fs.createReadStream(csvfile);
     csvtojsonV2({
       delimiter: ";"
     })
       .fromFile(csvfile)
       .then(
         jsonObj => {
-          var i=0
+          var i = 0;
           async.forEachSeries(jsonObj, (radio, callback) => {
             // saving & creating the radio
             radioaux = verify.verifyAndCreateRadio(radio);
@@ -50,11 +50,11 @@ var stream = fs.createReadStream(csvfile);
               Radio.collection.insertOne(radioaux, function(err, doc) {
                 if (err) {
                   console.log("err trying to save an radio!");
-                  console.log(i)
+                  console.log(i);
                   i++;
                   callback();
                 } else {
-                  parser.parsexml(url, id);
+                  parse.parsexml(url, id);
                   callback();
                 }
               });
@@ -70,26 +70,28 @@ var stream = fs.createReadStream(csvfile);
                   console.log("err trying to save an radio!");
                   callback();
                 } else {
-                  
                   callback();
                 }
               });
             }
           });
-          
         },
         err => {
           if (err) console.error(err.message);
         }
       );
       res.redirect("/showcsv");
-  }).post("/importxml", function(req, res, next) {
+  })
+  .post("/importxml", function(req, res, next) {
     console.log("parsing the xml file");
-    var url=encodeURI(req.body.url)
-    console.log(url)
+    var url = encodeURI(req.body.url);
+    console.log(url);
     //parsing the xml
-    request({url:url, followAllRedirects: true},
-      function (error, response, text) {
+    request({ url: url, followAllRedirects: true }, function(
+      error,
+      response,
+      text
+    ) {
       if (error) {
         throw error;
       } else {
@@ -104,7 +106,7 @@ var stream = fs.createReadStream(csvfile);
               if (verify.verifyItemExsist(channel)) {
                 channel[0].item.forEach(it => {
                   xmlitems = verify.verifyAndCreateItem(it);
-                  xmlitems.channel=xmlchannel._id;
+                  xmlitems.channel = xmlchannel._id;
                   //saving the item
                   Item.collection.insert(xmlitems, function(err, doc) {
                     if (err) {
@@ -146,9 +148,8 @@ var stream = fs.createReadStream(csvfile);
       }
     });
   });
-  router.post("/", upload.single("inputfile"), function(req, res) {
+router.post("/", upload.single("inputfile"), function(req, res) {
   res.redirect("/import");
 });
-
 
 module.exports = router;
