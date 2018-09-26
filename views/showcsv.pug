@@ -3,7 +3,7 @@ extends layout
 block content
   .main.container
     .row
-        h1.display-4.m-b-2#listradio List of channels
+        h1.display-4.m-b-2#listradio List of Radios
     
     table.table.table-bordered#table
 
@@ -33,6 +33,7 @@ block content
                 td #{radio['categories']}
                 td #{radio['description']}
                 td #{radio['keywords']}
+    script(src="/javascripts/loading.js")
         
                        
     

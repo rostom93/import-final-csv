@@ -3,38 +3,72 @@ extends layout
 block content
   .main.container
     .row
-        h1.display-4.m-b-2#listitem List of Items
-    a#csvlink(href="/showcsv") return
-    a#xmllink(href="/showxml") return
+    if channelTitle
+        h1.display-4.m-b-2#listitem Channel #{channelTitle}: List of Items
+        a#csvlink(href="/showxml") return
+    else
+        h1.display-4.m-b-2#listitem Radio #{radioTitle}: List of Items
+        a#xmllink(href="/showcsv") return
     br
-    table.table.table-bordered#table
+    if channelTitle
+        table.table.table-bordered#table
 
-        thead
+            thead
 
-            tr
-                th #
+                tr
+                    th #
 
-                th Title
+                    th Title
 
-                th Author
+                    th Author
 
-                th Release date
+                    th Release date
 
-                th category
+                    th Description
 
-                th Description
+                    th keywords
 
-                th keywords
-        if items.length
-        each item, i in items
-            tr.showitem(id=item['_id'])
-                td #{i+1}
-                td #{item['title']}
-                td #{item['author']}
-                td #{item['pubDate']}
-                td #{item['category']}
-                td #{item['description']}
-                td #{item['keywords']}
+                    th Summary
+
+                    th Validation
+            each item, i in items
+                tr.showitem(id=item['_id'])
+                    td #{i+1}
+                    td #{item['title']}
+                    td #{item['author']}
+                    td #{item['pubDate']}
+                    td #{item['description']}
+                    td #{item['keywords']}
+                    td #{item['summary']}
+                    td #{item['valid']}
+    else
+         table.table.table-bordered#table
+
+            thead
+
+                tr
+                    th #
+
+                    th Title
+
+                    th Duration
+
+                    th Release date
+
+                    th Description
+
+                    th Summary
+
+                    th Validation
+            each item, i in items
+                tr.showitem(id=item['_id'])
+                    td #{i+1}
+                    td #{item['title']}
+                    td #{item['duration']}
+                    td #{item['pubDate']}
+                    td #{item['description']}
+                    td #{item['summary']}
+                    td #{item['valid']}
         
                        
     

@@ -1,12 +1,12 @@
 var express = require("express");
 var router = express.Router();
 var mongoose = require("mongoose");
-var channel = mongoose.model("Channel");
+var Channel = mongoose.model("Channel");
 var Item = mongoose.model("Item");
 
 router
   .get("/", function(req, res, next) {
-    channel.find({}, function(err, docs) {
+    Channel.find({}, function(err, docs) {
       if (!err) {
         res.render("showxml", {
           channels: docs
@@ -18,12 +18,19 @@ router
   })
   .get("/showitem/:id", function(req, res, next) {
     var idChannel = req.param("id");
-    Item.find({ channel: idChannel }, function(err, items) {
+
+    Channel.findById(idChannel, function(err, channel) {
       if (err) throw err;
-      else
-        res.render("showItems", {
-          items: items
+      else {
+        Item.find({ channel: idChannel }, function(err, items) {
+          if (err) throw err;
+          else
+            res.render("showItems", {
+              items: items,
+              channelTitle: channel.title
+            });
         });
+      }
     });
   });
 
