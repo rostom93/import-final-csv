@@ -7,7 +7,7 @@ var router = express.Router();
 var parse = require("../public/javascripts/parsing");
 var fs = require("fs");
 var mongoose = require("mongoose");
-var request = require("request");
+var request = require("request")
 
 var Channel = mongoose.model("Channel");
 var xml2js = require("xml2js");
@@ -45,17 +45,39 @@ router
             // saving & creating the radio
             radioaux = verify.verifyAndCreateRadio(radio);
             if (radioaux) {
-              const url = radioaux.rss_url;
-              const id = radioaux._id;
-              Radio.collection.insertOne(radioaux, function(err, doc) {
-                if (err) {
-                  console.log("err trying to save an radio!");
-                  console.log(i);
-                  i++;
-                  callback();
+              
+              Radio.findOne({ title: radio.title }, function(err, rad) {
+                if (rad) {
+                  console.log("found this radio",radio.title)
+                  radioaux._id = rad._id;
+                  rad = radioaux;
+                  const url = radioaux.rss_url;
+                  const id = radioaux._id;
+                  Radio.collection.save(rad, function(err) {
+                    if (err) {
+                      console.log("err trying to save an radio!");
+                      console.log(i);
+                      i++;
+                      callback();
+                    } else {
+                      
+                      callback();
+                    }
+                  });
                 } else {
-                  parse.parsexml(url, id);
-                  callback();
+                  Radio.collection.insert(radioaux, function(err, doc) {
+                    const url = radioaux.rss_url;
+                    const id = radioaux._id;
+                    if (err) {
+                      console.log("err trying to save an radio!");
+                      console.log(i);
+                      i++;
+                      callback();
+                    } else {
+                      parse.parsexml(url, id);
+                      callback();
+                    }
+                  });
                 }
               });
             } else {
@@ -65,7 +87,7 @@ router
                 msg: "the file is empty"
               });
               radioaux.valid = false;
-              Radio.collection.insertOne(radioaux, function(err, doc) {
+              Radio.collection.insert(radioaux, function(err, doc) {
                 if (err) {
                   console.log("err trying to save an radio!");
                   callback();
@@ -80,14 +102,14 @@ router
           if (err) console.error(err.message);
         }
       );
-      res.redirect("/showcsv");
+    res.redirect("/showcsv");
   })
   .post("/importxml", function(req, res, next) {
     console.log("parsing the xml file");
-    var url = encodeURI(req.body.url);
+    var url = req.body.url;
     console.log(url);
     //parsing the xml
-    request({ url: url, followAllRedirects: true }, function(
+    request({ method: "GET",url: url, followAllRedirects: true }, function(
       error,
       response,
       text
@@ -95,37 +117,14 @@ router
       if (error) {
         throw error;
       } else {
+        console.log(text)
+        fs.writeFileSync( __dirname + "/../public/files/file.xml", text);
         parser.parseString(text, function(err, result) {
           if (err) {
             console.log(err);
           } else {
-            if (verify.verifyChannel(result)) {
-              var channel = result["rss"]["channel"];
-              channel.valid = true;
-              xmlchannel = verify.verifyAndCreateChannel(channel);
-              if (verify.verifyItemExsist(channel)) {
-                channel[0].item.forEach(it => {
-                  xmlitems = verify.verifyAndCreateItem(it);
-                  xmlitems.channel = xmlchannel._id;
-                  //saving the item
-                  Item.collection.insert(xmlitems, function(err, doc) {
-                    if (err) {
-                      console.log("err trying to save an item!");
-                      return;
-                    } else {
-                      console.log("Done saving the items!");
-                    }
-                  });
-                });
-              } else {
-                xmlchannel.valid = false;
-                errorsMsg = {
-                  code: "100",
-                  msg: "Channel does not have any item"
-                };
-                xmlchannel.errorsMsg.push(errorsMsg);
-              }
-            } else {
+            
+            if (!verify.verifyChannel(result)) {
               xmlchannel = new Channel();
               xmlchannel.valid = false;
               errorsMsg = {
@@ -133,16 +132,66 @@ router
                 msg: "Channel does not exsist"
               };
               xmlchannel.errorsMsg.push(errorsMsg);
+              Channel.collection.insert(xmlchannel, function(err, doc) {
+                if (err) {
+                  console.log("err trying to save the channel!");
+                  return;
+                } else {
+                  console.log("Done saving the channel");
+                  res.send("done saving the channel");
+                }
+              });
+            } else {
+              var channel = result["rss"]["channel"];
+              channel.valid = true;
+              xmlchannel = verify.verifyAndCreateChannel(channel);
+              Channel.findOne({ title: channel[0].title }, function(err, ch) {
+                if (ch) {
+                  xmlchannel._id = ch._id;
+                  ch = xmlchannel;
+                  Channel.collection.save(ch, function(err) {
+                    if (err) throw err;
+                    else res.send("done updating the channel");
+                  });
+                } else {
+                  if (verify.verifyItemExsist(channel)) {
+                    channel[0].item.forEach(it => {
+                      xmlitems = verify.verifyAndCreateItem(it);
+                      xmlitems.channel = xmlchannel._id;
+                      //saving the item
+                      Item.collection.insert(xmlitems, function(err, doc) {
+                        if (err) {
+                          console.log("err trying to save an item!");
+                          return;
+                        } else {
+                          console.log("Done saving the items!");
+                        }
+                      });
+                    });
+                  } else {
+                    xmlchannel.valid = false;
+                    errorsMsg = {
+                      code: "100",
+                      msg: "Channel does not have any item"
+                    };
+                    xmlchannel.errorsMsg.push(errorsMsg);
+                  }
+                  Channel.collection.insert(xmlchannel, function(err, doc) {
+                    if (err) {
+                      console.log("err trying to save the channel!");
+                      return;
+                    } else {
+                      console.log("Done saving the channel");
+                      res.send("done saving the channel");
+                    }
+                  });
+                }
+              });
+              
+             
             }
-            Channel.collection.insert(xmlchannel, function(err, doc) {
-              if (err) {
-                console.log("err trying to save the channel!");
-                return;
-              } else {
-                console.log("Done saving the channel");
-                res.send("done saving the channel");
-              }
-            });
+
+          
           }
         });
       }

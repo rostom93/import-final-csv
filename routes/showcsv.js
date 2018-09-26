@@ -32,6 +32,6 @@ router
         });
       }
     });
-  });
+  })
 
 module.exports = router;

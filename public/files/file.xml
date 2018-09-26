@@ -1,0 +1,356 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+    <channel>
+        <itunes:explicit>no</itunes:explicit>
+        <title>Les secrets politiques</title>
+        <link>http://www.europe1.fr/</link>
+        <language>fr-FR</language>
+        <copyright>Europe1</copyright>
+        <itunes:subtitle>Les secrets politiques</itunes:subtitle>
+        <itunes:author>Europe 1</itunes:author>
+        <itunes:summary></itunes:summary>
+        <itunes:category text="" />
+        <description></description>
+        <itunes:owner>
+            <itunes:name>Europe 1</itunes:name>
+            <itunes:email>courrier@europe1.fr</itunes:email>
+            </itunes:owner>
+        <itunes:image href="http://cdn-europe1.new2.ladmedia.fr/var/europe1/storage/images/media/podcasts/les-secrets-politiques/519508-1-fre-FR/Les-secrets-politiques.jpg"/>
+        <image>
+            <title>Les secrets politiques</title>
+            <url>http://cdn-europe1.new2.ladmedia.fr/var/europe1/storage/images/media/podcasts/les-secrets-politiques/519508-1-fre-FR/Les-secrets-politiques.jpg</url>
+            <link>http://www.europe1.fr</link>
+        </image>
+
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/2758369/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Mon, 30 May 2016 07:25:00 +0200</pubDate>
+                <title><![CDATA[Allo Resto : "Je crois au bonheur et à la performance"]]></title>
+                <itunes:subtitle><![CDATA[Allo Resto : "Je crois au bonheur et à la performance"]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/2758369/podcast.mp3</guid>
+                <description><![CDATA[]]></description>
+                <itunes:summary><![CDATA[]]></itunes:summary>
+                <itunes:duration>00:00:43</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/2754247/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Wed, 25 May 2016 07:25:00 +0200</pubDate>
+                <title><![CDATA[Mimer les symptômes des maladies neurologiques : "Apprendre en s'amusant"]]></title>
+                <itunes:subtitle><![CDATA[Mimer les symptômes des maladies neurologiques : "Apprendre en s'amusant"]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/2754247/podcast.mp3</guid>
+                <description><![CDATA[]]></description>
+                <itunes:summary><![CDATA[]]></itunes:summary>
+                <itunes:duration>00:00:49</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/2717533/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Tue, 12 Apr 2016 07:25:00 +0200</pubDate>
+                <title><![CDATA[Cancer : "Ce test c'est l'espoir de demain"]]></title>
+                <itunes:subtitle><![CDATA[Cancer : "Ce test c'est l'espoir de demain"]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/2717533/podcast.mp3</guid>
+                <description><![CDATA[]]></description>
+                <itunes:summary><![CDATA[]]></itunes:summary>
+                <itunes:duration>00:00:48</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/2682106/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Wed, 02 Mar 2016 07:25:00 +0100</pubDate>
+                <title><![CDATA[Alain Chamfort évoque Serge Gainsbourg]]></title>
+                <itunes:subtitle><![CDATA[Alain Chamfort évoque Serge Gainsbourg]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/2682106/podcast.mp3</guid>
+                <description><![CDATA[]]></description>
+                <itunes:summary><![CDATA[]]></itunes:summary>
+                <itunes:duration>00:06:30</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1366640/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Fri, 10 Jul 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Bruno Lemaire veut rester très discret]]></title>
+                <itunes:subtitle><![CDATA[Bruno Lemaire veut rester très discret]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1366640/podcast.mp3</guid>
+                <description><![CDATA[Dans les secrets politiques, Caroline Roux nous révèle la volonté de Bruno Lemaire de se mettre en retrait du débat publique notamment sur la Grèce.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></description>
+                <itunes:summary><![CDATA[Dans les secrets politiques, Caroline Roux nous révèle la volonté de Bruno Lemaire de se mettre en retrait du débat publique notamment sur la Grèce.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></itunes:summary>
+                <itunes:duration>00:02:53</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1366248/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Thu, 09 Jul 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Nicolas Sarkozy veut remettre de l'ordre chez les Républicains ]]></title>
+                <itunes:subtitle><![CDATA[Nicolas Sarkozy veut remettre de l'ordre chez les Républicains ]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1366248/podcast.mp3</guid>
+                <description><![CDATA[Dans les secrets politiques, Caroline Roux nous révèle la volonté de Nicolas Sarkozy de mettre en place une méthode de travail pour éviter les tensions internes.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></description>
+                <itunes:summary><![CDATA[Dans les secrets politiques, Caroline Roux nous révèle la volonté de Nicolas Sarkozy de mettre en place une méthode de travail pour éviter les tensions internes.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></itunes:summary>
+                <itunes:duration>00:02:52</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1365806/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Wed, 08 Jul 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Touche pas à mon église ! ]]></title>
+                <itunes:subtitle><![CDATA[Touche pas à mon église ! ]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1365806/podcast.mp3</guid>
+                <description><![CDATA[La proposition de Dalil Boubakeur, au micro d'Europe 1, de transformer en Mosquée les églises désaffectées ne plait pas à tout le monde du côté des Républicains.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></description>
+                <itunes:summary><![CDATA[La proposition de Dalil Boubakeur, au micro d'Europe 1, de transformer en Mosquée les églises désaffectées ne plait pas à tout le monde du côté des Républicains.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></itunes:summary>
+                <itunes:duration>00:02:47</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1365402/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Tue, 07 Jul 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[La colère des maires de France]]></title>
+                <itunes:subtitle><![CDATA[La colère des maires de France]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1365402/podcast.mp3</guid>
+                <description><![CDATA[Suite à la baisse des dotations dans les mairies, les maires de France vont se mobiliser pour protester contre cette baisse. Une situation tendue à l'approche des élections.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></description>
+                <itunes:summary><![CDATA[Suite à la baisse des dotations dans les mairies, les maires de France vont se mobiliser pour protester contre cette baisse. Une situation tendue à l'approche des élections.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></itunes:summary>
+                <itunes:duration>00:02:54</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1364926/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Mon, 06 Jul 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Nicolas Sarkozy va se mettre en retrait sur le dossier grec]]></title>
+                <itunes:subtitle><![CDATA[Nicolas Sarkozy va se mettre en retrait sur le dossier grec]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1364926/podcast.mp3</guid>
+                <description><![CDATA[L'ancien président de la République va se mettre en retrait sur la question de la Grèce après des attaques très fortes contre Alexis Tsípras le week-end dernier.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></description>
+                <itunes:summary><![CDATA[L'ancien président de la République va se mettre en retrait sur la question de la Grèce après des attaques très fortes contre Alexis Tsípras le week-end dernier.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></itunes:summary>
+                <itunes:duration>00:03:01</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1363978/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Fri, 03 Jul 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Comment François Hollande gère le dossier grec depuis l'Afrique]]></title>
+                <itunes:subtitle><![CDATA[Comment François Hollande gère le dossier grec depuis l'Afrique]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1363978/podcast.mp3</guid>
+                <description><![CDATA[Actuellement en tournée en Afrique, François Hollande n'en oublie pas l'Europe et la Grèce pour autant. La président de la République donne ses consignes à ses ministres par téléphone et reste en contact avec Aléxis Tsípras.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></description>
+                <itunes:summary><![CDATA[Actuellement en tournée en Afrique, François Hollande n'en oublie pas l'Europe et la Grèce pour autant. La président de la République donne ses consignes à ses ministres par téléphone et reste en contact avec Aléxis Tsípras.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></itunes:summary>
+                <itunes:duration>00:02:33</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1363440/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Thu, 02 Jul 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Régionales : Manuel Valls hésite à s'impliquer]]></title>
+                <itunes:subtitle><![CDATA[Régionales : Manuel Valls hésite à s'impliquer]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1363440/podcast.mp3</guid>
+                <description><![CDATA[Caroline Roux décrypte la posture de Manuel Valls à six mois des élections régionales. En effet, le Premier ministre ne sait pas encore s'il doit "s'impliquer personnellement"...Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></description>
+                <itunes:summary><![CDATA[Caroline Roux décrypte la posture de Manuel Valls à six mois des élections régionales. En effet, le Premier ministre ne sait pas encore s'il doit "s'impliquer personnellement"...Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></itunes:summary>
+                <itunes:duration>00:02:33</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1362968/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Wed, 01 Jul 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA["Génération radicale" : le rapport choc de Malek Boutih]]></title>
+                <itunes:subtitle><![CDATA["Génération radicale" : le rapport choc de Malek Boutih]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1362968/podcast.mp3</guid>
+                <description><![CDATA[Le député socialiste Malek Boutih a remis un rapport au Premier ministre sur les jeunes tentés par le djihad.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></description>
+                <itunes:summary><![CDATA[Le député socialiste Malek Boutih a remis un rapport au Premier ministre sur les jeunes tentés par le djihad.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></itunes:summary>
+                <itunes:duration>00:02:25</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1362478/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Tue, 30 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Tensions entre François Hollande et Manuel Valls]]></title>
+                <itunes:subtitle><![CDATA[Tensions entre François Hollande et Manuel Valls]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1362478/podcast.mp3</guid>
+                <description><![CDATA[Après les déclarations du Premier ministre sur une "guerre de civilisation", les relations se tendent avec le président de la République.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></description>
+                <itunes:summary><![CDATA[Après les déclarations du Premier ministre sur une "guerre de civilisation", les relations se tendent avec le président de la République.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h.]]></itunes:summary>
+                <itunes:duration>00:02:35</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1362014/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Mon, 29 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[François Hollande veut se servir de la Grèce pour rassurer]]></title>
+                <itunes:subtitle><![CDATA[François Hollande veut se servir de la Grèce pour rassurer]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1362014/podcast.mp3</guid>
+                <description><![CDATA[Le président de la République veut prendre en main le dossier grec, il prévoit déjà une possible sortie de la Grèce de l'euro.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h]]></description>
+                <itunes:summary><![CDATA[Le président de la République veut prendre en main le dossier grec, il prévoit déjà une possible sortie de la Grèce de l'euro.Retrouvez les secrets politiques de Caroline Roux tous les jours dans Europe matin de 6h à 9h]]></itunes:summary>
+                <itunes:duration>00:01:51</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1361022/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Fri, 26 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Régionales, Aubry en difficulté]]></title>
+                <itunes:subtitle><![CDATA[Régionales, Aubry en difficulté]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1361022/podcast.mp3</guid>
+                <description><![CDATA[Le parti socialiste se tourne vers Martine Aubry car il a peur de perdre le bastion du Nord-Pas de Calais au regard des récents sondages.]]></description>
+                <itunes:summary><![CDATA[Le parti socialiste se tourne vers Martine Aubry car il a peur de perdre le bastion du Nord-Pas de Calais au regard des récents sondages.]]></itunes:summary>
+                <itunes:duration>00:02:30</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1360468/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Thu, 25 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[2017 : Mélenchon déjà dans le costume du candidat]]></title>
+                <itunes:subtitle><![CDATA[2017 : Mélenchon déjà dans le costume du candidat]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1360468/podcast.mp3</guid>
+                <description><![CDATA[Jean-Luc Mélenchon est tout à fait prêt à se lancer dans la course à la présidentielle de 2017.]]></description>
+                <itunes:summary><![CDATA[Jean-Luc Mélenchon est tout à fait prêt à se lancer dans la course à la présidentielle de 2017.]]></itunes:summary>
+                <itunes:duration>00:02:12</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1359874/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Wed, 24 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Régionales, les socialistes veulent "écraser" les Verts]]></title>
+                <itunes:subtitle><![CDATA[Régionales, les socialistes veulent "écraser" les Verts]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1359874/podcast.mp3</guid>
+                <description><![CDATA[Les écologistes ont décidé de ne pas s'associer aux socialistes pour les Régionales ce qui rend la majorité furieuse.]]></description>
+                <itunes:summary><![CDATA[Les écologistes ont décidé de ne pas s'associer aux socialistes pour les Régionales ce qui rend la majorité furieuse.]]></itunes:summary>
+                <itunes:duration>00:02:31</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1359350/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Tue, 23 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Conférence climat, Laurent Fabius sur le pont]]></title>
+                <itunes:subtitle><![CDATA[Conférence climat, Laurent Fabius sur le pont]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1359350/podcast.mp3</guid>
+                <description><![CDATA[Laurent Fabius a sa propre version d'une conférence pour le climat réussie. Le ministre des Affaires étrangères tient à s'occuper de tout même du prix des snacks.]]></description>
+                <itunes:summary><![CDATA[Laurent Fabius a sa propre version d'une conférence pour le climat réussie. Le ministre des Affaires étrangères tient à s'occuper de tout même du prix des snacks.]]></itunes:summary>
+                <itunes:duration>00:02:15</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1358778/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Mon, 22 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Hollande, tout pour sauvegarder Chrisiane Taubira]]></title>
+                <itunes:subtitle><![CDATA[Hollande, tout pour sauvegarder Chrisiane Taubira]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1358778/podcast.mp3</guid>
+                <description><![CDATA[Christiane Taubira menace de quitter le gouvernement si son texte sur la justice des mineurs ne passe pas.]]></description>
+                <itunes:summary><![CDATA[Christiane Taubira menace de quitter le gouvernement si son texte sur la justice des mineurs ne passe pas.]]></itunes:summary>
+                <itunes:duration>00:02:43</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1357884/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Fri, 19 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Flexibilité, le nouveau cap du gouvernement]]></title>
+                <itunes:subtitle><![CDATA[Flexibilité, le nouveau cap du gouvernement]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1357884/podcast.mp3</guid>
+                <description><![CDATA[Le gouvernement veut montrer qu'il avance notamment sur la loi Macron et veut garder le même tempo.]]></description>
+                <itunes:summary><![CDATA[Le gouvernement veut montrer qu'il avance notamment sur la loi Macron et veut garder le même tempo.]]></itunes:summary>
+                <itunes:duration>00:02:37</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1357374/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Thu, 18 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Régionales, la bataille de Xavier Bertrand contre Marine Le Pen]]></title>
+                <itunes:subtitle><![CDATA[Régionales, la bataille de Xavier Bertrand contre Marine Le Pen]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1357374/podcast.mp3</guid>
+                <description><![CDATA[Xavier Bertrand a calqué sa campagne contre Marine Le Pen aux Régionales sur celle de Nicolas Sarkozy en 2007.]]></description>
+                <itunes:summary><![CDATA[Xavier Bertrand a calqué sa campagne contre Marine Le Pen aux Régionales sur celle de Nicolas Sarkozy en 2007.]]></itunes:summary>
+                <itunes:duration>00:02:28</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1356774/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Wed, 17 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Bayrou, une petite envie de 2017]]></title>
+                <itunes:subtitle><![CDATA[Bayrou, une petite envie de 2017]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1356774/podcast.mp3</guid>
+                <description><![CDATA[François Bayrou envisage de nouveau de se présenter à la prochaine élection présidentielle si Nicolas Sarkozy remporte les primaires des Républicains.]]></description>
+                <itunes:summary><![CDATA[François Bayrou envisage de nouveau de se présenter à la prochaine élection présidentielle si Nicolas Sarkozy remporte les primaires des Républicains.]]></itunes:summary>
+                <itunes:duration>00:02:31</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1356204/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Tue, 16 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Hollande, en toute discrétion jusqu'au 14 juillet]]></title>
+                <itunes:subtitle><![CDATA[Hollande, en toute discrétion jusqu'au 14 juillet]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1356204/podcast.mp3</guid>
+                <description><![CDATA[François Hollande veut reprendre de la hauteur et devrait se faire plus discret pour donner de l'ampleur à son 14 juillet.]]></description>
+                <itunes:summary><![CDATA[François Hollande veut reprendre de la hauteur et devrait se faire plus discret pour donner de l'ampleur à son 14 juillet.]]></itunes:summary>
+                <itunes:duration>00:02:28</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1355636/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Mon, 15 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Prélèvement à la source, en chantier jusqu'en 2018]]></title>
+                <itunes:subtitle><![CDATA[Prélèvement à la source, en chantier jusqu'en 2018]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1355636/podcast.mp3</guid>
+                <description><![CDATA[Le gros chantier du prélèvement à la source inquiète jusque dans les rangs du gouvernement.]]></description>
+                <itunes:summary><![CDATA[Le gros chantier du prélèvement à la source inquiète jusque dans les rangs du gouvernement.]]></itunes:summary>
+                <itunes:duration>00:02:36</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1354698/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Fri, 12 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Grands patrons, Nicolas Sarkozy règle ses comptes]]></title>
+                <itunes:subtitle><![CDATA[Grands patrons, Nicolas Sarkozy règle ses comptes]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1354698/podcast.mp3</guid>
+                <description><![CDATA[Les patrons du CAC 40 ne sont pas encore réconciliés avec Nicolas Sarkozy. D'un côté comme de l'autre, la tension est perceptible.]]></description>
+                <itunes:summary><![CDATA[Les patrons du CAC 40 ne sont pas encore réconciliés avec Nicolas Sarkozy. D'un côté comme de l'autre, la tension est perceptible.]]></itunes:summary>
+                <itunes:duration>00:02:35</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1354076/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Thu, 11 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Les amis ou le cercle de Jean-Marie Le Pen]]></title>
+                <itunes:subtitle><![CDATA[Les amis ou le cercle de Jean-Marie Le Pen]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1354076/podcast.mp3</guid>
+                <description><![CDATA[Jean-Marie Le Pen a bien avancé sur la formation de son association avec notamment l'écriture des statuts.]]></description>
+                <itunes:summary><![CDATA[Jean-Marie Le Pen a bien avancé sur la formation de son association avec notamment l'écriture des statuts.]]></itunes:summary>
+                <itunes:duration>00:02:21</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1353542/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Wed, 10 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Remaniement, l'heure est venue]]></title>
+                <itunes:subtitle><![CDATA[Remaniement, l'heure est venue]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1353542/podcast.mp3</guid>
+                <description><![CDATA[Le remaniement pourrait avoir lieu ce soir ou au plus tard lundi soir et devrait apporter son lot de surprise.]]></description>
+                <itunes:summary><![CDATA[Le remaniement pourrait avoir lieu ce soir ou au plus tard lundi soir et devrait apporter son lot de surprise.]]></itunes:summary>
+                <itunes:duration>00:02:21</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1353078/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Tue, 09 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Santé, le FN veut surfer sur un malaise]]></title>
+                <itunes:subtitle><![CDATA[Santé, le FN veut surfer sur un malaise]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1353078/podcast.mp3</guid>
+                <description><![CDATA[Le Front national s'attaque désormais au monde de la santé pour se glisser dans toutes les failles de la société.]]></description>
+                <itunes:summary><![CDATA[Le Front national s'attaque désormais au monde de la santé pour se glisser dans toutes les failles de la société.]]></itunes:summary>
+                <itunes:duration>00:02:50</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1352504/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Mon, 08 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[ Montebourg, une réelle capacité de nuisance]]></title>
+                <itunes:subtitle><![CDATA[ Montebourg, une réelle capacité de nuisance]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1352504/podcast.mp3</guid>
+                <description><![CDATA[Arnaud Montebourg est heureux de son coup contre le gouvernement et prouve qu'il n'a pas renoncé à la politique.]]></description>
+                <itunes:summary><![CDATA[Arnaud Montebourg est heureux de son coup contre le gouvernement et prouve qu'il n'a pas renoncé à la politique.]]></itunes:summary>
+                <itunes:duration>00:02:40</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+                    <item>
+                <enclosure url="http://api.europe1.fr/podcast/mp3/itunes-421793245/1351412/podcast.mp3" type="audio/mpeg" length=""/>
+                <pubDate>Fri, 05 Jun 2015 07:25:00 +0200</pubDate>
+                <title><![CDATA[Qatar, Philippot va tenter un coup politique]]></title>
+                <itunes:subtitle><![CDATA[Qatar, Philippot va tenter un coup politique]]></itunes:subtitle>
+                <guid>http://api.europe1.fr/podcast/mp3/itunes-421793245/1351412/podcast.mp3</guid>
+                <description><![CDATA[Florian Philippot est sous le coup d'une plainte en diffamation déposée par le Qatar dénonçant ses propos sur le financement du terrorisme.]]></description>
+                <itunes:summary><![CDATA[Florian Philippot est sous le coup d'une plainte en diffamation déposée par le Qatar dénonçant ses propos sur le financement du terrorisme.]]></itunes:summary>
+                <itunes:duration>00:02:49</itunes:duration>
+                <itunes:keywords><![CDATA[]]></itunes:keywords>
+            </item>
+            </channel>
+</rss>

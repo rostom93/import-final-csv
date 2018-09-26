@@ -33,12 +33,12 @@ $(function() {
   });
   $("#parseXml").on("click", function(e) {
     e.preventDefault();
-    var url = document.getElementById("xmlurl").value;
-    console.log(url);
-    fetch(url).then(function(data2) {
+    var url2 = document.getElementById("xmlurl").value;
+    console.log(url2);
+    fetch(url2, {mode: 'no-cors'}).then(function(data2) {
       $.ajax({
         type: 'post',
-        data:{url:data2.url},
+        data:{url:url2},
         url: '/importxml',	
         success: function (data) {
           window.location.href = '/showxml'
