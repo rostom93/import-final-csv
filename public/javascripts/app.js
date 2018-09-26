@@ -6,7 +6,7 @@ $(function() {
     if (extension === "csv") {
       $("#messages")
         .show()
-        .html("The file you have chosen is : " + filename);
+        .html("The file you have chosen is : " + this.files[0].name);
       $("#messagee").hide();
       document.getElementById("uploadfile").disabled = false;
     } else {
@@ -43,6 +43,7 @@ $(function() {
         success: function (data) {
           window.location.href = '/showxml'
         }
+        
      });
     });
   });

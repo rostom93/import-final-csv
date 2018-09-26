@@ -2,37 +2,42 @@ extends layout
 
 block content
   .main.container
-    .row
-        h1.display-4.m-b-2#listradio List of Radios
-    
-    table.table.table-bordered#table
+    .contentcsv
+        .row
+            a(href="/") Homepage
+            h1.display-4.m-b-2#listradio List of Radios
+        
+        table.table.table-bordered#table
 
-        thead
+            thead
 
-            tr
-                th #
+                tr
+                    th #
 
-                th Title
+                    th Title
 
-                th Author
+                    th Author
 
-                th Release date
+                    th Release date
 
-                th category
+                    th category
 
-                th Description
+                    th Description
 
-                th keywords
-        if radios.length
-        each radio, i in radios
-            tr.showitemcsv(id=radio['_id'])
-                td #{i+1}
-                td #{radio['title']}
-                td #{radio['author']}
-                td #{radio['release_date']}
-                td #{radio['categories']}
-                td #{radio['description']}
-                td #{radio['keywords']}
+                    th keywords
+            if radios.length
+            each radio, i in radios
+                tr.showitemcsv(id=radio['_id'])
+                    td #{i+1}
+                    td #{radio['title']}
+                    td #{radio['author']}
+                    td #{radio['release_date']}
+                    td #{radio['categories']}
+                    td #{radio['description']}
+                    td #{radio['keywords']}
+        
+    .se-pre-con
+   
     script(src="/javascripts/loading.js")
         
                        
