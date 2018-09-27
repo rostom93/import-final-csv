@@ -90,4 +90,16 @@ table tr td{
 #hidden{
   display:none
 }
+.err{
+  display: none;
+  background-color: #d6abb9;
+  
+}
+#clickerr:hover{
+  background:#d6abb9;
+}
+.err td{
+  background-color: #d6abb9;
+  text-align: left
+}
 

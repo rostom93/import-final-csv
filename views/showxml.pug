@@ -22,7 +22,6 @@ block content
                 th Description
 
                 th summary
-        if channels.length
         each channel, i in channels
             tr.showitemxml(id=channel['_id'])
                 td #{i+1}

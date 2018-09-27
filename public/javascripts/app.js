@@ -7,6 +7,7 @@ $(document).ready(function () {
       $(".se-pre-con").hide();
   });
 });
+
 $(function() {
   $("input[name=inputfile]").change(function() {
     var filename = $("#inputfile").val();
@@ -62,11 +63,12 @@ $(function() {
       });
   });
   $(".showitemcsv").on("click", function(e) {
-    console.log(this.id);
-    window.location.href = "showcsv/showitem/" + this.id;
+    $(location).attr('href', "showcsv/showitem/" + this.id);
   });
   $(".showitemxml").on("click", function(e) {
-    console.log(this.id);
-    window.location.href = "showxml/showitem/" + this.id;
+    $(location).attr('href', "showxml/showitem/" + this.id);
   });
+ 
+ 
+
 });
