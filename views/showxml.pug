@@ -22,6 +22,8 @@ block content
                 th Description
 
                 th summary
+
+                th Errors
         each channel, i in channels
             tr.showitemxml(id=channel['_id'])
                 td #{i+1}
@@ -30,6 +32,12 @@ block content
                 td #{channel['pubDate']}
                 td #{channel['description']}
                 td #{channel['summary']}
+                td.err 
+                    if channel['errorsMsg'].length
+                        each err in channel['errorsMsg']
+                            p(style="color:red") #{err['code']}: #{err['msg']}
+                    else
+                        p(style="color:green") this Channel is valid
         
                        
     

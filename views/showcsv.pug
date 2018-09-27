@@ -37,7 +37,7 @@ block content
                     td #{radio['categories']}
                     td #{radio['description']}
                     td #{radio['keywords']}
-                    td 
+                    td.err 
                         if radio['errorsMsg'].length
                             each err in radio['errorsMsg']
                                 p(style="color:red") #{err['code']}: #{err['msg']}

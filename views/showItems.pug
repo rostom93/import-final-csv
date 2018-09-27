@@ -31,6 +31,8 @@ block content
                     th Summary
 
                     th Validation
+
+                    th Errors
             each item, i in items
                 tr.showitem(id=item['_id'])
                     td #{i+1}
@@ -40,7 +42,12 @@ block content
                     td #{item['description']}
                     td #{item['keywords']}
                     td #{item['summary']}
-                    td #{item['valid']}
+                    td.err 
+                        if item['errorsMsg'].length
+                            each err in item['errorsMsg']
+                                p(style="color:red") #{err['code']}: #{err['msg']}
+                        else
+                            p(style="color:green") this item is valid
     else
          table.table.table-bordered#table
 
@@ -59,7 +66,7 @@ block content
 
                     th Summary
 
-                    th Validation
+                    th Errors
             each item, i in items
                 tr.showitem(id=item['_id'])
                     td #{i+1}
@@ -68,7 +75,11 @@ block content
                     td #{item['pubDate']}
                     td #{item['description']}
                     td #{item['summary']}
-                    td #{item['valid']}
-        
+                    td.err 
+                        if item['errorsMsg'].length
+                            each err in item['errorsMsg']
+                                p(style="color:red") * #{err['code']}: #{err['msg']}
+                        else
+                            p(style="color:green") this Item is valid
                        
     

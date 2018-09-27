@@ -91,11 +91,12 @@ table tr td{
   display:none
 }
 .err{
-  display: none;
-  background-color: #d6abb9;
-  
+  background-color: white;
+  text-align: left;
+  width: 15%;
+  cursor: not-allowed;
 }
-#clickerr:hover{
+#clickerr:hover:not(.err){
   background:#d6abb9;
 }
 .err td{
