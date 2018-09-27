@@ -1,3 +1,12 @@
+$(document).ready(function () {
+  $(document).ajaxStart(function () {
+    $(".contentmain").hide();
+      $(".se-pre-con").show();
+      $("#messageeXml").hide();
+  }).ajaxStop(function () {
+      $(".se-pre-con").hide();
+  });
+});
 $(function() {
   $("input[name=inputfile]").change(function() {
     var filename = $("#inputfile").val();
@@ -35,24 +44,29 @@ $(function() {
     e.preventDefault();
     var url2 = document.getElementById("xmlurl").value;
     console.log(url2);
-    fetch(url2, {mode: 'no-cors'}).then(function(data2) {
+
       $.ajax({
-        type: 'post',
-        data:{url:url2},
-        url: '/importxml',	
-        success: function (data) {
-          window.location.href = '/showxml'
+        type: "post",
+        data: { url: url2 },
+        url: "/importxml",
+        success: function(data) {
+          $(".contentmain").hide();
+          window.location.href = "/showxml";
+        },
+        error: function(xhr, status, error) {
+          $(".contentmain").show();
+          $("#messageeXml")
+            .show()
+            .html("The URL you have entered is unvalid. Please try again");
         }
-        
-     });
-    });
+      });
   });
-  $(".showitemcsv").on("click",function(e){
-    console.log (this.id)
-    window.location.href = 'showcsv/showitem/'+this.id
-  })
-  $(".showitemxml").on("click",function(e){
-    console.log (this.id)
-    window.location.href = 'showxml/showitem/'+this.id
-  })
+  $(".showitemcsv").on("click", function(e) {
+    console.log(this.id);
+    window.location.href = "showcsv/showitem/" + this.id;
+  });
+  $(".showitemxml").on("click", function(e) {
+    console.log(this.id);
+    window.location.href = "showxml/showitem/" + this.id;
+  });
 });

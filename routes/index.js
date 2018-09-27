@@ -7,7 +7,7 @@ var router = express.Router();
 var parse = require("../public/javascripts/parsing");
 var fs = require("fs");
 var mongoose = require("mongoose");
-var request = require("request")
+var request = require("request");
 
 var Channel = mongoose.model("Channel");
 var xml2js = require("xml2js");
@@ -45,10 +45,9 @@ router
             // saving & creating the radio
             radioaux = verify.verifyAndCreateRadio(radio);
             if (radioaux) {
-              
               Radio.findOne({ title: radio.title }, function(err, rad) {
                 if (rad) {
-                  console.log("found this radio",radio.title)
+                  console.log("found this radio", radio.title);
                   radioaux._id = rad._id;
                   rad = radioaux;
                   const url = radioaux.rss_url;
@@ -60,7 +59,6 @@ router
                       i++;
                       callback();
                     } else {
-                      
                       callback();
                     }
                   });
@@ -107,40 +105,28 @@ router
   .post("/importxml", function(req, res, next) {
     console.log("parsing the xml file");
     var url = req.body.url;
+    if (typeof url == "undefined" || url == "") {
+      console.log("error");
+      res.status(500).send("error");
+    }
     console.log(url);
     //parsing the xml
-    request({ method: "GET",url: url, followAllRedirects: true }, function(
+    request({ method: "GET", url: url, followAllRedirects: true }, function(
       error,
       response,
       text
     ) {
       if (error) {
-        throw error;
+        console.log("error");
+        res.status(500).send("error");
       } else {
-        console.log(text)
-        fs.writeFileSync( __dirname + "/../public/files/file.xml", text);
         parser.parseString(text, function(err, result) {
           if (err) {
-            console.log(err);
+            console.log("error");
+            res.status(500).send("error");
           } else {
-            
             if (!verify.verifyChannel(result)) {
-              xmlchannel = new Channel();
-              xmlchannel.valid = false;
-              errorsMsg = {
-                code: "10",
-                msg: "Channel does not exsist"
-              };
-              xmlchannel.errorsMsg.push(errorsMsg);
-              Channel.collection.insert(xmlchannel, function(err, doc) {
-                if (err) {
-                  console.log("err trying to save the channel!");
-                  return;
-                } else {
-                  console.log("Done saving the channel");
-                  res.send("done saving the channel");
-                }
-              });
+              res.status(500).send("error");
             } else {
               var channel = result["rss"]["channel"];
               channel.valid = true;
@@ -150,8 +136,13 @@ router
                   xmlchannel._id = ch._id;
                   ch = xmlchannel;
                   Channel.collection.save(ch, function(err) {
-                    if (err) throw err;
-                    else res.send("done updating the channel");
+                    if (err) {
+                      console.log("error");
+                      res.status(500).send("error");
+                    } else {
+                      res.send("done updating the channel");
+                      console.log("channel updated");
+                    }
                   });
                 } else {
                   if (verify.verifyItemExsist(channel)) {
@@ -178,8 +169,8 @@ router
                   }
                   Channel.collection.insert(xmlchannel, function(err, doc) {
                     if (err) {
-                      console.log("err trying to save the channel!");
-                      return;
+                      console.log("error");
+                      res.status(500).send("error");
                     } else {
                       console.log("Done saving the channel");
                       res.send("done saving the channel");
@@ -187,11 +178,7 @@ router
                   });
                 }
               });
-              
-             
             }
-
-          
           }
         });
       }

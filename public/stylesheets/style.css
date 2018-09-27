@@ -84,5 +84,10 @@ table tr td{
   width: 100%;
   
 }
-
+.contentmain{
+  width: 100%;
+}
+#hidden{
+  display:none
+}
 

@@ -2,27 +2,30 @@ extends layout
 
 block content
   .main.container
-    .row
-        h1.display-4.m-b-2 Csv file upload
+    .contentmain
+        .row
+            h1.display-4.m-b-2 Csv file upload
 
-        form#myForm(method='post' enctype='multipart/form-data')
-            label(for='inputfile', class='labelfile') Choose a file
-                input#inputfile(type='file', class="inputfile",name='inputfile')
+            form#myForm(method='post' enctype='multipart/form-data')
+                label(for='inputfile', class='labelfile') Choose a file
+                    input#inputfile(type='file', class="inputfile",name='inputfile')
+                | &nbsp;&nbsp;&nbsp;
+                input#uploadfile(type='submit',class="uploadfile", name='uploadfile',value="start uploading", disabled) 
+            p#messages.alert.alert-success(style='display:none')
+            p#messagee.alert.alert-danger(style='display:none')
+            br
+            br
+            br
+            hr
+            br
+            br
+            br
+            h1.display-4.m-b-2 XML Parsing
+            input#xmlurl(type="url",class="xmlurl", name='xmlurl',placeholder="https://example.xml")
             | &nbsp;&nbsp;&nbsp;
-            input#uploadfile(type='submit',class="uploadfile", name='uploadfile',value="start uploading", disabled) 
-        p#messages.alert.alert-success(style='display:none')
-        p#messagee.alert.alert-danger(style='display:none')
-        br
-        br
-        br
-        hr
-        br
-        br
-        br
-        h1.display-4.m-b-2 XML Parsing
-        input#xmlurl(type="url",class="xmlurl", name='xmlurl',placeholder="https://example.xml")
-        | &nbsp;&nbsp;&nbsp;
-        input#parseXml(type='button',class="parseXml", name='parseXml',value="start parsing", disabled) 
-        p#messagesXml.alert.alert-success(style='display:none')
-        p#messageeXml.alert.alert-danger(style='display:none')
+            input#parseXml(type='button',class="parseXml", name='parseXml',value="start parsing", disabled) 
+            p#messagesXml.alert.alert-success(style='display:none')
+            p#messageeXml.alert.alert-danger(style='display:none')
+    .se-pre-con#hidden
+
     
