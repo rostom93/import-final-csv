@@ -30,12 +30,13 @@ block content
                     td #{channel['release_date']}
                     td #{channel['categories']}
                     td.action
-                        a.view(href='showItems/'+channel['_id']) 
+                        a.view(href='/showItems/'+channel['_id']) 
                             i.fa.fa-th-list(aria-hidden='true' ) 
                             | &nbsp;&nbsp;&nbsp;view items
                         br
                         br
-                        i.fa.fa-pencil.edit(aria-hidden='true' class="fas fa-stroopwafel fa-lg") 
+                        a.edit(href='show/edit/'+channel['_id'])
+                            i.fa.fa-pencil(aria-hidden='true' class="fas fa-stroopwafel fa-lg") 
                         | &nbsp;&nbsp;&nbsp; 
                         | &nbsp;&nbsp;&nbsp;
                         | &nbsp;&nbsp;&nbsp;

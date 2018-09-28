@@ -1,4 +1,4 @@
-function format(errors) {
+function format(errors,id) {
   var string = "";
   if (errors.length != 0) {
     string +=
@@ -16,10 +16,10 @@ function format(errors) {
         "</td>" +
         "</tr>";
     });
-    string += "</table>" + "<a href='#'> View more details ... </a></div>";
+    string += "</table>"+"<a href='/show/details/"+id+"'> View more details ... </a></div>"
   } else {
     string +=
-      "<p class='noerr'>this channel does not have any errors</p><a href='#'> View more details ... </a>";
+      "<p class='noerr'>this channel does not have any errors</p><a href='/show/details/"+id+"'> View more details ... </a>";
   }
 
   return string;
@@ -64,7 +64,7 @@ $(document).ready(function() {
         row.child.hide();
       } else {
         tr.addClass("details");
-        row.child(format(errors)).show();
+        row.child(format(errors,id)).show();
       }
     });
   });
@@ -88,6 +88,32 @@ $(document).ready(function() {
       }
     });
   });
+  $("form").submit(function(){
+    var channel= {
+      _id:$("#id").val(),
+      title:$("#title").val(),
+      categories:$("#category").val(),
+      author:$("#author").val(),
+      image:$("#image").val(),
+      summary:$("#summary").val(),
+      description:$("#description").val(),
+      language:$("#language").val()
+
+    };
+    console.log(channel)
+    $.ajax({
+      url: "/show/update",
+      type: "post",
+      dataType: "json",
+      data:channel ,
+      success: function(result) {
+        succedit();
+      },
+      error: function(xhr, status, error) {
+        erredit();
+      }
+    });
+ });
 });
 function succ() {
   swal("Done!",
@@ -99,6 +125,19 @@ function err() {
   swal(
     "Error!",
     ",we are having issues deleting the channel please try again later",
+    "error"
+  );
+}
+function succedit() {
+  swal("Done!",
+   ",The channel has been successfully updated",
+    "success"
+  );
+}
+function erredit() {
+  swal(
+    "Error!",
+    ",we are having issues updating the channel please try again later",
     "error"
   );
 }

@@ -2,7 +2,7 @@ $(window).on("load", function() {
   $(".se-pre-con").hide();
   $(".contentcsv").show();
 });
-function format(errors) {
+function format(errors,id) {
     var string = "";
     if(errors.length!=0){
         string +=
@@ -20,7 +20,7 @@ function format(errors) {
           "</td>" +
           "</tr>";
       });
-      string += "</table>"+"<a href='#'> View more details ... </a></div>"
+      string += "</table>"+"<a href='/showItems/details/"+id+"'> View more details ... </a></div>"
    
     }
     else{
@@ -58,23 +58,22 @@ function format(errors) {
           row.child.hide();
         } else {
           tr.addClass( 'details' );
-          row.child(format(errors)).show();
+          row.child(format(errors,id)).show();
         }
       });
     });
     $("#table tbody").on("click", ".delete", function() {
       var tr = $(this).closest("tr");
       var id = tr.attr("id");
-      console.log(id);
       dt.row($(this).parents("tr"))
-            .remove()
-            .draw();
+      .remove()
+      .draw();
       $.ajax({
         url: "/showItems/delete/" + id,
         type: "DELETE",
         success: function(result) {
-          
           succ();
+         
         },
         error: function(xhr, status, error) {
           err();

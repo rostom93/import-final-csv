@@ -126,6 +126,31 @@ td[colspan] {
   color: rgb(112, 53, 82);
 
 }
+img{
+  width: 40%;
+  height: 200px;
+}
+.stretch{
+  font-size: 1.2em;
+  width: 50%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.stretchbutton{
+  font-size: 1.3em;
+  width: 15%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+ 
+}
+.form-group-button{
+  margin-top: 15px;
+  margin-left: 25%;
+}
+.edit-form{
+  text-align: left;
+  margin:15px;
+}
 
 
 

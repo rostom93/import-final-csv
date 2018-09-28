@@ -29,7 +29,7 @@ block content
                         td #{item['author']}
                         td #{item['pubDate']}
                         td.action
-                            a(href='#')
+                            a.edit(href='/showItems/edit/'+item['_id'])
                                 i.fa.fa-pencil.edit(aria-hidden='true' class="fas fa-stroopwafel fa-lg") 
                             | &nbsp;&nbsp;&nbsp; 
                             | &nbsp;&nbsp;&nbsp;

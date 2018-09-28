@@ -1,0 +1,112 @@
+extends layout
+
+block content
+  .main.container
+    .contentmain
+        .row
+            h1.display-4.m-b-2 Item #{channel['title']}: edit
+            form.edit-form
+                input(type="hidden" class="form-control" id="id" value=channel['id'])
+                div(class="form-group")
+                    label.stretch( for="title") Title
+                        input(type="text" class="form-control" id="title" value=channel['title'])
+                div(class="form-group")
+                    label.stretch( for="category") Category
+                        input(type="text" class="form-control" id="category" value=channel['categories'])
+                div( class="form-group")
+                    label.stretch(for="author") Author
+                        input(type="text" class="form-control" id="author" value=channel['author'])
+                div( class="form-group")
+                    label.stretch(for="image") Image URL
+                        input(type="link" class="form-control" id="image" value=channel['image'])
+                div( class="form-group")
+                    label.stretch(for="summary") Summary
+                        textarea( class="form-control" id="summary" rows="3") #{channel['summary']}
+                div( class="form-group")
+                    label.stretch(for="description") Description
+                        textarea( class="form-control" id="description" rows="3") #{channel['description']}
+                div( class="form-group")
+                    label.stretch(for="language") Language
+                        | &nbsp;&nbsp;&nbsp;
+                        select(data-placeholder='Choose a Language...' id="language")
+                            option(value=channel['language']) #{channel['language']}
+                            option(value='AF') Afrikanns
+                            option(value='SQ') Albanian
+                            option(value='AR') Arabic
+                            option(value='HY') Armenian
+                            option(value='EU') Basque
+                            option(value='BN') Bengali
+                            option(value='BG') Bulgarian
+                            option(value='CA') Catalan
+                            option(value='KM') Cambodian
+                            option(value='ZH') Chinese (Mandarin)
+                            option(value='HR') Croation
+                            option(value='CS') Czech
+                            option(value='DA') Danish
+                            option(value='NL') Dutch
+                            option(value='EN') English
+                            option(value='ET') Estonian
+                            option(value='FJ') Fiji
+                            option(value='FI') Finnish
+                            option(value='FR') French
+                            option(value='KA') Georgian
+                            option(value='DE') German
+                            option(value='EL') Greek
+                            option(value='GU') Gujarati
+                            option(value='HE') Hebrew
+                            option(value='HI') Hindi
+                            option(value='HU') Hungarian
+                            option(value='IS') Icelandic
+                            option(value='ID') Indonesian
+                            option(value='GA') Irish
+                            option(value='IT') Italian
+                            option(value='JA') Japanese
+                            option(value='JW') Javanese
+                            option(value='KO') Korean
+                            option(value='LA') Latin
+                            option(value='LV') Latvian
+                            option(value='LT') Lithuanian
+                            option(value='MK') Macedonian
+                            option(value='MS') Malay
+                            option(value='ML') Malayalam
+                            option(value='MT') Maltese
+                            option(value='MI') Maori
+                            option(value='MR') Marathi
+                            option(value='MN') Mongolian
+                            option(value='NE') Nepali
+                            option(value='NO') Norwegian
+                            option(value='FA') Persian
+                            option(value='PL') Polish
+                            option(value='PT') Portuguese
+                            option(value='PA') Punjabi
+                            option(value='QU') Quechua
+                            option(value='RO') Romanian
+                            option(value='RU') Russian
+                            option(value='SM') Samoan
+                            option(value='SR') Serbian
+                            option(value='SK') Slovak
+                            option(value='SL') Slovenian
+                            option(value='ES') Spanish
+                            option(value='SW') Swahili
+                            option(value='SV') Swedish 
+                            option(value='TA') Tamil
+                            option(value='TT') Tatar
+                            option(value='TE') Telugu
+                            option(value='TH') Thai
+                            option(value='BO') Tibetan
+                            option(value='TO') Tonga
+                            option(value='TR') Turkish
+                            option(value='UK') Ukranian
+                            option(value='UR') Urdu
+                            option(value='UZ') Uzbek
+                            option(value='VI') Vietnamese
+                            option(value='CY') Welsh
+                            option(value='XH') Xhosa
+
+                
+                div.form-group-button(class="form-group")
+                    button.stretchbutton(type="submit" class="btn btn-primary") Save
+                    | &nbsp;&nbsp;&nbsp;
+                    | &nbsp;&nbsp;&nbsp;
+                    button.stretchbutton(type="reset" class="btn btn-danger") Cancel
+    script(src="/javascripts/showJQ.js")
