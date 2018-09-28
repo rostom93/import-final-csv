@@ -5,7 +5,7 @@ var mongoose = require("mongoose");
 var request = require("request");
 var fs = require("fs");
 var xml2js = require("xml2js");
-var Radio = mongoose.model("Radio");
+var Channel = mongoose.model("Channel");
 var parser = new xml2js.Parser();
 var verify = require("./verification");
 var verifyitem = require("./verifItem");
@@ -25,18 +25,18 @@ module.exports.parsexml = function(url, id) {
       body
     ) {
       if (typeof body === "undefined" || body === null) {
-        console.log(url, " this is an empty radio");
-        Radio.findById(id, function(err, radio) {
+        console.log(url, " this is an empty channel");
+        Channel.findById(id, function(err, channel) {
           if (err) console.log(err);
           else {
             // do your updates here
-            radio.errorsMsg.push({
+            channel.errorsMsg.push({
               code: "404",
               msg: "the xml link does not provide any elements"
             });
-            radio.valid = false;
+            channel.valid = false;
 
-            radio.save(function(err) {
+            channel.save(function(err) {
               if (err) console.log(err);
             });
           }
@@ -59,7 +59,7 @@ module.exports.parsexml = function(url, id) {
                   async.forEachSeries(channel[0].item, (it, callback) => {
                     xmlitem = verifyitem.verifyAndCreateItem(it);
                     // saving the items
-                    xmlitem.radio = id;
+                    xmlitem.channel = id;
 
                     Item.collection.insert(xmlitem, function(err, doc) {
                       if (err) {
@@ -72,16 +72,16 @@ module.exports.parsexml = function(url, id) {
                     });
                   });
                 } else {
-                  Radio.findById(id, function(err, radio) {
-                    if (radio) {
+                  Channel.findById(id, function(err, channel) {
+                    if (channel) {
                       // do your updates here
-                      radio.errorsMsg.push({
+                      channel.errorsMsg.push({
                         code: "405",
-                        msg: "the radio does not have any items"
+                        msg: "the channel does not have any items"
                       });
-                      radio.valid = false;
+                      channel.valid = false;
 
-                      radio.save(function(err) {
+                      channel.save(function(err) {
                         if (err) console.log(err);
                       });
                     }
@@ -90,16 +90,16 @@ module.exports.parsexml = function(url, id) {
               }
             }
           } else {
-            Radio.findById(id, function(err, radio) {
-              if (radio) {
+            Channel.findById(id, function(err, channel) {
+              if (channel) {
                 // do your updates here
-                radio.errorsMsg.push({
+                channel.errorsMsg.push({
                   code: "403",
                   msg: "there is an error in the xml format"
                 });
-                radio.valid = false;
+                channel.valid = false;
 
-                radio.save(function(err) {
+                channel.save(function(err) {
                   if (err) console.log(err);
                 });
               }

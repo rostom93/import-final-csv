@@ -19,7 +19,6 @@ var itemSchema = new Schema({
   author: String,
   subtitle:String,
   guid: String,
-  radio: { type: Schema.Types.ObjectId, ref: "Radio" },
   channel: { type: Schema.Types.ObjectId, ref: "Channel" },
   summary: String,
   keywords: String,

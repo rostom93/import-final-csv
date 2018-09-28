@@ -1,6 +1,6 @@
 var express = require("express");
 var mongoose = require("mongoose");
-var Radio = mongoose.model("Radio");
+var Channel = mongoose.model("Channel");
 var Item = mongoose.model("Item");
 const urlExists = require("url-exists");
 
@@ -159,197 +159,197 @@ module.exports.verifEnclosure = function(enclosure) {
     return null;
   }
 };
-// verify elements of radio and create it
-module.exports.verifyAndCreateRadio = function(jsonRadio, callback) {
-  radio = new Radio();
+// verify elements of channel and create it
+module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
+  channel = new Channel();
 
-  jsonRadio = this.removeItunes(jsonRadio);
+  jsonChannel = this.removeItunes(jsonChannel);
 
-  if (this.isEmpty(jsonRadio.cid)) {
-    radio.cid = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.cid)) {
+    channel.cid = "";
+    channel.errorsMsg.push({
       code: "31",
-      msg: "the radio does not specify the cid"
+      msg: "the channel does not specify the cid"
     });
   } else {
-    radio.cid = jsonRadio.cid;
+    channel.cid = jsonChannel.cid;
   }
 
-  if (this.isEmpty(jsonRadio.new_cid)) {
-    radio.new_cid = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.new_cid)) {
+    channel.new_cid = "";
+    channel.errorsMsg.push({
       code: "32",
-      msg: "the radio does not specify the new_cid"
+      msg: "the channel does not specify the new_cid"
     });
   } else {
-    radio.new_cid = jsonRadio.new_cid;
+    channel.new_cid = jsonChannel.new_cid;
   }
 
-  if (this.isEmpty(jsonRadio.channel_id)) {
-    radio.channel_id = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.channel_id)) {
+    channel.channel_id = "";
+    channel.errorsMsg.push({
       code: "33",
-      msg: "the radio does not specify the channel_id"
+      msg: "the channel does not specify the channel_id"
     });
   } else {
-    radio.channel_id = jsonRadio.channel_id;
+    channel.channel_id = jsonChannel.channel_id;
   }
-  if (this.isEmpty(jsonRadio.LANGUAGE)) {
-    radio.LANGUAGE = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.LANGUAGE)) {
+    channel.LANGUAGE = "";
+    channel.errorsMsg.push({
       code: "34",
-      msg: "the radio does not specify the LANGUAGE"
+      msg: "the channel does not specify the LANGUAGE"
     });
-    radio.valid = false;
+    channel.valid = false;
   } else {
-    radio.LANGUAGE = jsonRadio.LANGUAGE;
+    channel.language = jsonChannel.language;
   }
-  if (this.isEmpty(jsonRadio.title)) {
-    radio.title = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.title)) {
+    channel.title = "";
+    channel.errorsMsg.push({
       code: "35",
-      msg: "the radio does not specify the title"
+      msg: "the channel does not specify the title"
     });
-    radio.valid = false;
+    channel.valid = false;
   } else {
-    radio.title = jsonRadio.title;
+    channel.title = jsonChannel.title;
   }
-  if (this.isEmpty(jsonRadio.description)) {
-    radio.description = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.description)) {
+    channel.description = "";
+    channel.errorsMsg.push({
       code: "36",
-      msg: "the radio does not specify the description"
+      msg: "the channel does not specify the description"
     });
-    radio.valid = false;
+    channel.valid = false;
   } else {
-    radio.description = jsonRadio.description;
+    channel.description = jsonChannel.description;
   }
-  if (this.isEmpty(jsonRadio.Provider_id)) {
-    radio.Provider_id = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.Provider_id)) {
+    channel.Provider_id = "";
+    channel.errorsMsg.push({
       code: "37",
-      msg: "the radio does not specify the Provider_id"
+      msg: "the channel does not specify the Provider_id"
     });
   } else {
-    radio.Provider_id = jsonRadio.Provider_id;
+    channel.Provider_id = jsonChannel.Provider_id;
   }
-  if (this.isEmpty(jsonRadio.author)) {
-    radio.author = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.author)) {
+    channel.author = "";
+    channel.errorsMsg.push({
       code: "38",
-      msg: "the radio does not specify the author"
+      msg: "the channel does not specify the author"
     });
-    radio.valid = false;
+    channel.valid = false;
   } else {
-    radio.author = jsonRadio.author;
+    channel.author = jsonChannel.author;
   }
-  if (this.isEmpty(jsonRadio.categories)) {
-    radio.categories = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.categories)) {
+    channel.categories = "";
+    channel.errorsMsg.push({
       code: "39",
-      msg: "the radio does not specify the categories"
+      msg: "the channel does not specify the categories"
     });
-    radio.valid = false;
+    channel.valid = false;
   } else {
-    radio.categories = jsonRadio.categories;
+    channel.categories = jsonChannel.categories;
   }
 
-  if (this.isEmpty(jsonRadio.keywords)) {
-    radio.keywords = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.keywords)) {
+    channel.keywords = "";
+    channel.errorsMsg.push({
       code: "39",
-      msg: "the radio does not specify the keywords"
+      msg: "the channel does not specify the keywords"
     });
   } else {
-    radio.keywords = jsonRadio.keywords;
+    channel.keywords = jsonChannel.keywords;
   }
 
-  if (this.isEmpty(jsonRadio.tags)) {
-    radio.tags = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.tags)) {
+    channel.tags = "";
+    channel.errorsMsg.push({
       code: "310",
-      msg: "the radio does not specify the tags"
+      msg: "the channel does not specify the tags"
     });
   } else {
-    radio.tags = jsonRadio.tags;
+    channel.tags = jsonChannel.tags;
   }
-  verifdate = this.verifyDate(jsonRadio.release_date);
+  verifdate = this.verifyDate(jsonChannel.release_date);
   if (verifdate === null) {
-    radio.release_date = jsonRadio.release_date;
+    channel.release_date = jsonChannel.release_date;
   } else {
-    radio.errorsMsg.push(verifdate);
-    radio.valid = false;
-    radio.release_date = new Date();
+    channel.errorsMsg.push(verifdate);
+    channel.valid = false;
+    channel.release_date = new Date();
   }
 
-  const verifurl = this.verifyUrlcsv(jsonRadio.rss_url);
+  const verifurl = this.verifyUrlcsv(jsonChannel.rss_url);
   if (verifurl !== null) {
-    radio.errorsMsg.push(verifurl);
-    radio.valid = false;
+    channel.errorsMsg.push(verifurl);
+    channel.valid = false;
   }
-  radio.rss_url = jsonRadio.rss_url;
+  channel.rss_url = jsonChannel.rss_url;
 
-  if (this.isEmpty(jsonRadio.small_cover_url)) {
-    radio.small_cover_url = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.small_cover_url)) {
+    channel.small_cover_url = "";
+    channel.errorsMsg.push({
       code: "313",
-      msg: "the radio does not specify the small_cover_url"
+      msg: "the channel does not specify the small_cover_url"
     });
   } else {
-    radio.small_cover_url = jsonRadio.small_cover_url;
+    channel.small_cover_url = jsonChannel.small_cover_url;
   }
-  if (this.isEmpty(jsonRadio.big_cover_url)) {
-    radio.big_cover_url = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.big_cover_url)) {
+    channel.big_cover_url = "";
+    channel.errorsMsg.push({
       code: "314",
-      msg: "the radio does not specify the big_cover_url"
+      msg: "the channel does not specify the big_cover_url"
     });
   } else {
-    radio.big_cover_url = jsonRadio.big_cover_url;
+    channel.big_cover_url = jsonChannel.big_cover_url;
   }
-  if (this.isEmpty(jsonRadio.episode_count)) {
-    radio.episode_count = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.episode_count)) {
+    channel.episode_count = "";
+    channel.errorsMsg.push({
       code: "3144",
-      msg: "the radio does not specify the episode_count"
+      msg: "the channel does not specify the episode_count"
     });
   } else {
-    radio.episode_count = jsonRadio.episode_count;
+    channel.episode_count = jsonChannel.episode_count;
   }
-  if (this.isEmpty(jsonRadio.play_count)) {
-    radio.play_count = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.play_count)) {
+    channel.play_count = "";
+    channel.errorsMsg.push({
       code: "3145",
-      msg: "the radio does not specify the play_count"
+      msg: "the channel does not specify the play_count"
     });
   } else {
-    radio.play_count = jsonRadio.play_count;
+    channel.play_count = jsonChannel.play_count;
   }
 
-  if (this.isEmpty(jsonRadio.sub_count)) {
-    radio.sub_count = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.sub_count)) {
+    channel.sub_count = "";
+    channel.errorsMsg.push({
       code: "3146",
-      msg: "the radio does not specify the sub_count"
+      msg: "the channel does not specify the sub_count"
     });
   } else {
-    radio.sub_count = jsonRadio.sub_count;
+    channel.sub_count = jsonChannel.sub_count;
   }
-  if (this.isEmpty(jsonRadio.comment_count)) {
-    radio.comment_count = "";
-    radio.errorsMsg.push({
+  if (this.isEmpty(jsonChannel.comment_count)) {
+    channel.comment_count = "";
+    channel.errorsMsg.push({
       code: "3146",
-      msg: "the radio does not specify the comment_count"
+      msg: "the channel does not specify the comment_count"
     });
   } else {
-    radio.comment_count = jsonRadio.comment_count;
+    channel.comment_count = jsonChannel.comment_count;
   }
 
-  return radio;
+  return channel;
 };
 
 // verify elements of channel and create it
-module.exports.verifyAndCreateChannel = function(ch, callback) {
+module.exports.verifyAndCreateChannelxml = function(ch, callback) {
   channel = new Channel();
   
   ch[0]=this.removeItunes(ch[0]);

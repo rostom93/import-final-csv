@@ -8,7 +8,7 @@ router
   .get("/", function(req, res, next) {
     Channel.find({}, function(err, docs) {
       if (!err) {
-        res.render("showxml", {
+        res.render("show", {
           channels: docs
         });
       } else {
@@ -32,6 +32,18 @@ router
         });
       }
     });
-  });
+  }).get("/getErrors/:id",function(req, res, next){
+    var idChannel = req.param("id");
+    Channel.findById(idChannel, function(err, channel) {
+      if (err) throw err;
+      else {
+       
+            res.send({
+              data:channel.errorsMsg
+            });
+        
+      }
+    });
+  })
 
 module.exports = router;

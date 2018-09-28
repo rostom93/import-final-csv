@@ -13,7 +13,6 @@ var Channel = mongoose.model("Channel");
 var xml2js = require("xml2js");
 var parser = new xml2js.Parser();
 var async = require("async");
-var Radio = mongoose.model("Radio");
 var csvtojsonV2 = require("csvtojson");
 var Item = mongoose.model("Item");
 var multer = require("multer");
@@ -41,20 +40,20 @@ router
       .then(
         jsonObj => {
           var i = 0;
-          async.forEachSeries(jsonObj, (radio, callback) => {
-            // saving & creating the radio
-            radioaux = verify.verifyAndCreateRadio(radio);
-            if (radioaux) {
-              Radio.findOne({ title: radio.title }, function(err, rad) {
+          async.forEachSeries(jsonObj, (channel, callback) => {
+            // saving & creating the channel
+            channelaux = verify.verifyAndCreateChannel(channel);
+            if (channelaux) {
+              Channel.findOne({ title: channel.title }, function(err, rad) {
                 if (rad) {
-                  console.log("found this radio", radio.title);
-                  radioaux._id = rad._id;
-                  rad = radioaux;
-                  const url = radioaux.rss_url;
-                  const id = radioaux._id;
-                  Radio.collection.save(rad, function(err) {
+                  console.log("found this channel", channel.title);
+                  channelaux._id = rad._id;
+                  rad = channelaux;
+                  const url = channelaux.rss_url;
+                  const id = channelaux._id;
+                  Channel.collection.save(rad, function(err) {
                     if (err) {
-                      console.log("err trying to save an radio!");
+                      console.log("err trying to save an channel!");
                       console.log(i);
                       i++;
                       callback();
@@ -63,11 +62,11 @@ router
                     }
                   });
                 } else {
-                  Radio.collection.insert(radioaux, function(err, doc) {
-                    const url = radioaux.rss_url;
-                    const id = radioaux._id;
+                  Channel.collection.insert(channelaux, function(err, doc) {
+                    const url = channelaux.rss_url;
+                    const id = channelaux._id;
                     if (err) {
-                      console.log("err trying to save an radio!");
+                      console.log("err trying to save an channel!");
                       console.log(i);
                       i++;
                       callback();
@@ -80,14 +79,14 @@ router
               });
             } else {
               console.log("the file is empty");
-              radioaux.errorsMsg.push({
+              channelaux.errorsMsg.push({
                 code: "30",
                 msg: "the file is empty"
               });
-              radioaux.valid = false;
-              Radio.collection.insert(radioaux, function(err, doc) {
+              channelaux.valid = false;
+              Channel.collection.insert(channelaux, function(err, doc) {
                 if (err) {
-                  console.log("err trying to save an radio!");
+                  console.log("err trying to save an channel!");
                   callback();
                 } else {
                   callback();
@@ -100,7 +99,7 @@ router
           if (err) console.error(err.message);
         }
       );
-    res.redirect("/showcsv");
+    res.redirect("/show");
   })
   .post("/importxml", function(req, res, next) {
     console.log("parsing the xml file");
@@ -130,7 +129,7 @@ router
             } else {
               var channel = result["rss"]["channel"];
               channel.valid = true;
-              xmlchannel = verify.verifyAndCreateChannel(channel);
+              xmlchannel = verify.verifyAndCreateChannelxml(channel);
               Channel.findOne({ title: channel[0].title }, function(err, ch) {
                 if (ch) {
                   xmlchannel._id = ch._id;

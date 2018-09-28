@@ -1,106 +1,109 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  text-align: center
+  text-align: center;
 }
 
 div {
   position: relative;
   overflow: hidden;
 }
-.labelfile{
+.labelfile {
   font-size: 1.25em;
   font-weight: 700;
   color: white;
-  background-color: #1D3557;
+  background-color: #1d3557;
   display: inline-block;
   padding: 10px;
   border-radius: 10px;
 }
 .labelfile:focus,
 .labelfile:hover {
-    background-color: #A8DADC;
+  background-color: #a8dadc;
 }
 .inputfile {
   width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
   z-index: -1;
-  
 }
-.uploadfile:disabled,.parseXml:disabled{
-  opacity: 0.3; 
+.uploadfile:disabled,
+.parseXml:disabled {
+  opacity: 0.3;
   cursor: not-allowed;
 }
-.uploadfile,.parseXml{
+.uploadfile,
+.parseXml {
   font-size: 1.25em;
   font-weight: 700;
   color: white;
-  
+
   display: inline-block;
   padding: 10px;
   border-radius: 10px;
 }
-.uploadfile{
-  background-color: #E4022C;
+.uploadfile {
+  background-color: #e4022c;
 }
-.parseXml{
+.parseXml {
   background-color: rgb(2, 228, 134);
 }
 
 .se-pre-con {
   background: url("../images/Preloader_2.gif") center no-repeat #fff;
-  
+
   position: fixed;
   left: 20%;
   top: 5%;
   width: 800px;
-  height:600px;
+  height: 600px;
   z-index: 9999;
-
 }
-#tableitem{
+#tableitem {
   display: none;
-  max-width: 100%;
 }
-table tr td{
-  width: auto;
-}
-.showitemcsv,.showitemxml{
+
+.showitemcsv,
+.showitemxml {
   cursor: pointer;
 }
-.showitemcsv:hover,.showitemxml:hover{
 
-  background:#c9e8f7;
-  position:relative;
-}
-#listofradios,#listitems{
+#listofradios,
+#listitems {
   display: none;
 }
-.contentcsv{
+.contentcsv {
   display: none;
   width: 100%;
-  
 }
-.contentmain{
+.contentmain {
   width: 100%;
 }
-#hidden{
-  display:none
+#hidden {
+  display: none;
+}
+
+td.details-control {
+  background: url("../images/details_open.png") no-repeat center center;
+  cursor: pointer;
+  background-size: 20px;
+}
+tr.details td.details-control {
+  background: url("../images/details_close.png") no-repeat center center;
+  background-size: 20px;
+}
+
+td[colspan] {
+  background-color: rgba(205, 206, 206, 0.733)!important;
 }
 .err{
-  background-color: white;
-  text-align: left;
-  width: 15%;
-  cursor: not-allowed;
+  background-color: transparent!important;
+  color: red;
+  font-size: 1.2em;
 }
-#clickerr:hover:not(.err){
-  background:#d6abb9;
+.noerr{
+  color: green;
+  font-size: 1.2em;
 }
-.err td{
-  background-color: #d6abb9;
-  text-align: left
-}
-
