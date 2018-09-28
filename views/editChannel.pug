@@ -9,7 +9,7 @@ block content
                 input(type="hidden" class="form-control" id="id" value=channel['id'])
                 div(class="form-group")
                     label.stretch( for="title") Title
-                        input(type="text" class="form-control" id="title" value=channel['title'])
+                        input(type="text" class="form-control" id="title" value=channel['title'] required)
                 div(class="form-group")
                     label.stretch( for="category") Category
                         input(type="text" class="form-control" id="category" value=channel['categories'])

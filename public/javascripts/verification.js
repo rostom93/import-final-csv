@@ -29,7 +29,7 @@ module.exports.isEmpty = function(chaine) {
 module.exports.verifyDate = function(date, callback) {
   if (typeof date === "undefined") {
     errorsMsg = {
-      code: "3111",
+      code: "301",
       msg: "release_date: date does not exsist"
     };
     return errorsMsg;
@@ -38,7 +38,7 @@ module.exports.verifyDate = function(date, callback) {
 
     if (isNaN(dateaux)) {
       errorsMsg = {
-        code: "3112",
+        code: "302",
         msg: "release_date: date format is not correct"
       };
       return errorsMsg;
@@ -81,7 +81,7 @@ module.exports.verifyUrlcsv = function(url, callback) {
     urlExists(url, function(err, exists) {
       if (!exists) {
         errorsMsg = {
-          code: "3120",
+          code: "401",
           msg: "the rss_url is not valid"
         };
       }
@@ -89,7 +89,7 @@ module.exports.verifyUrlcsv = function(url, callback) {
     return errorsMsg;
   } else if (url === "") {
     errorsMsg = {
-      code: "3121",
+      code: "402",
       msg: "the rss_url is empty"
     };
 
@@ -168,7 +168,7 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.cid)) {
     channel.cid = "";
     channel.errorsMsg.push({
-      code: "31",
+      code: "21",
       msg: "the channel does not specify the cid"
     });
   } else {
@@ -178,7 +178,7 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.new_cid)) {
     channel.new_cid = "";
     channel.errorsMsg.push({
-      code: "32",
+      code: "23",
       msg: "the channel does not specify the new_cid"
     });
   } else {
@@ -188,7 +188,7 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.channel_id)) {
     channel.channel_id = "";
     channel.errorsMsg.push({
-      code: "33",
+      code: "10",
       msg: "the channel does not specify the channel_id"
     });
   } else {
@@ -197,7 +197,7 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.LANGUAGE)) {
     channel.LANGUAGE = "";
     channel.errorsMsg.push({
-      code: "34",
+      code: "14",
       msg: "the channel does not specify the LANGUAGE"
     });
     channel.valid = false;
@@ -207,7 +207,7 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.title)) {
     channel.title = "";
     channel.errorsMsg.push({
-      code: "35",
+      code: "11",
       msg: "the channel does not specify the title"
     });
     channel.valid = false;
@@ -217,7 +217,7 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.description)) {
     channel.description = "";
     channel.errorsMsg.push({
-      code: "36",
+      code: "13",
       msg: "the channel does not specify the description"
     });
     channel.valid = false;
@@ -227,7 +227,7 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.Provider_id)) {
     channel.Provider_id = "";
     channel.errorsMsg.push({
-      code: "37",
+      code: "24",
       msg: "the channel does not specify the Provider_id"
     });
   } else {
@@ -236,7 +236,7 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.author)) {
     channel.author = "";
     channel.errorsMsg.push({
-      code: "38",
+      code: "15",
       msg: "the channel does not specify the author"
     });
     channel.valid = false;
@@ -244,9 +244,9 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
     channel.author = jsonChannel.author;
   }
   if (this.isEmpty(jsonChannel.categories)) {
-    channel.categories = "";
+    channel.categories = "unknown";
     channel.errorsMsg.push({
-      code: "39",
+      code: "19",
       msg: "the channel does not specify the categories"
     });
     channel.valid = false;
@@ -257,7 +257,7 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.keywords)) {
     channel.keywords = "";
     channel.errorsMsg.push({
-      code: "39",
+      code: "28",
       msg: "the channel does not specify the keywords"
     });
   } else {
@@ -267,50 +267,17 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.tags)) {
     channel.tags = "";
     channel.errorsMsg.push({
-      code: "310",
+      code: "280",
       msg: "the channel does not specify the tags"
     });
   } else {
     channel.tags = jsonChannel.tags;
   }
-  verifdate = this.verifyDate(jsonChannel.release_date);
-  if (verifdate === null) {
-    channel.release_date = jsonChannel.release_date;
-  } else {
-    channel.errorsMsg.push(verifdate);
-    channel.valid = false;
-    channel.release_date = new Date();
-  }
 
-  const verifurl = this.verifyUrlcsv(jsonChannel.rss_url);
-  if (verifurl !== null) {
-    channel.errorsMsg.push(verifurl);
-    channel.valid = false;
-  }
-  channel.rss_url = jsonChannel.rss_url;
-
-  if (this.isEmpty(jsonChannel.small_cover_url)) {
-    channel.small_cover_url = "";
-    channel.errorsMsg.push({
-      code: "313",
-      msg: "the channel does not specify the small_cover_url"
-    });
-  } else {
-    channel.small_cover_url = jsonChannel.small_cover_url;
-  }
-  if (this.isEmpty(jsonChannel.big_cover_url)) {
-    channel.big_cover_url = "";
-    channel.errorsMsg.push({
-      code: "314",
-      msg: "the channel does not specify the big_cover_url"
-    });
-  } else {
-    channel.big_cover_url = jsonChannel.big_cover_url;
-  }
   if (this.isEmpty(jsonChannel.episode_count)) {
     channel.episode_count = "";
     channel.errorsMsg.push({
-      code: "3144",
+      code: "25",
       msg: "the channel does not specify the episode_count"
     });
   } else {
@@ -319,7 +286,7 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.play_count)) {
     channel.play_count = "";
     channel.errorsMsg.push({
-      code: "3145",
+      code: "29",
       msg: "the channel does not specify the play_count"
     });
   } else {
@@ -329,7 +296,7 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.sub_count)) {
     channel.sub_count = "";
     channel.errorsMsg.push({
-      code: "3146",
+      code: "26",
       msg: "the channel does not specify the sub_count"
     });
   } else {
@@ -338,105 +305,68 @@ module.exports.verifyAndCreateChannel = function(jsonChannel, callback) {
   if (this.isEmpty(jsonChannel.comment_count)) {
     channel.comment_count = "";
     channel.errorsMsg.push({
-      code: "3146",
+      code: "27",
       msg: "the channel does not specify the comment_count"
     });
   } else {
     channel.comment_count = jsonChannel.comment_count;
   }
-
-  return channel;
-};
-
-// verify elements of channel and create it
-module.exports.verifyAndCreateChannelxml = function(ch, callback) {
-  channel = new Channel();
-  
-  ch[0]=this.removeItunes(ch[0]);
-  
-  if (this.isEmpty(ch[0].title)) {
-    channel.title = "";
-    channel.errorsMsg.push({
-      code: "11",
-      msg: "the channel does not have a title"
-    });
-    channel.valid = false;
-  } else {
-    channel.title = ch[0].title;
-  }
-  // you did not put verification on the link
-  if (this.isEmpty(ch[0].link)) {
+  if (this.isEmpty(jsonChannel.link)) {
     channel.link = "";
     channel.errorsMsg.push({
       code: "12",
-      msg: "the channel does not have a link"
+      msg: "the channel does not specify the link"
     });
-    channel.valid = false;
   } else {
-    channel.link = ch[0].link;
+    channel.link = jsonChannel.link;
   }
-  if (this.isEmpty(ch[0].description)) {
-    channel.description = "";
-    channel.errorsMsg.push({
-      code: "13",
-      msg: "the channel does not have a description"
-    });
-    channel.valid = false;
-  } else {
-    channel.description = ch[0].description;
-  }
-  if (this.isEmpty(ch[0].language)) {
-    channel.language = "";
-    channel.errorsMsg.push({
-      code: "14",
-      msg: "the channel does not specify the language"
-    });
-    channel.valid = false;
-  } else {
-    channel.language = ch[0].language;
-  }
-  if (this.isEmpty(ch[0].author)) {
-    channel.author = "";
-    channel.errorsMsg.push({
-      code: "15",
-      msg: "the channel does not specify the author"
-    });
-    channel.valid = false;
-  } else {
-    channel.author = ch[0].author;
-  }
-  if (this.isEmpty(ch[0].summary)) {
-    channel.summary = "";
-    channel.errorsMsg.push({
-      code: "16",
-      msg: "the channel does not specify the summary"
-    });
-    channel.valid = false;
-  } else {
-    channel.summary = ch[0].summary;
-  }
-  if (this.isEmpty(ch[0].subtitle)) {
+  if (this.isEmpty(jsonChannel.subtitle)) {
     channel.subtitle = "";
     channel.errorsMsg.push({
       code: "17",
       msg: "the channel does not specify the subtitle"
     });
   } else {
-    channel.subtitle = ch[0].subtitle;
+    channel.subtitle = jsonChannel.subtitle;
   }
-  if (this.isEmpty(ch[0].image)) {
-    channel.image = "";
+  if (this.isEmpty(jsonChannel.summary)) {
+    channel.summary = "";
     channel.errorsMsg.push({
-      code: "18",
-      msg: "the channel does not have an image"
+      code: "16",
+      msg: "the channel does not specify the summary"
     });
-    channel.valid = false;
   } else {
-    channel.image = ch[0].image[0]["$"]["href"];
+    channel.summary = jsonChannel.summary;
+  }
+  if (typeof jsonChannel.release_date === "undefined") {
+    verifdate = this.verifyDate(jsonChannel.pubDate);
+    if (verifdate === null) {
+      channel.pubDate = jsonChannel.pubDate;
+    } else {
+      channel.errorsMsg.push(verifdate);
+      channel.valid = false;
+      channel.pubDate = new Date();
+    }
+  } else {
+    verifdate = this.verifyDate(jsonChannel.release_date);
+    if (verifdate === null) {
+      channel.pubDate= jsonChannel.release_date;
+    } else {
+      channel.errorsMsg.push(verifdate);
+      channel.valid = false;
+      channel.pubDate = new Date();
+    }
   }
 
+  const verifurl = this.verifyUrlcsv(jsonChannel.rss_url);
+  if (verifurl !== null) {
+    channel.errorsMsg.push(verifurl);
+    channel.valid = false;
+  }
+  channel.rss_url = jsonChannel.rss_url;
   return channel;
 };
+
 // verify and create the item
 module.exports.verifyAndCreateItem = function(it) {
   item = new Item();
@@ -521,6 +451,7 @@ module.exports.verifyAndCreateItem = function(it) {
   } else {
     item.explicit = it.explicit[0];
   }
+
   if (this.isEmpty(it.category)) {
     item.category = "";
     item.errorsMsg.push({

@@ -28,13 +28,20 @@ router.get("/getErrors/:id", function(req, res, next) {
 });
 router.delete("/delete/:id", function(req, res, next) {
   var idChannel = req.param("id");
-  Channel.findByIdAndRemove({ _id: iditem }).exec(function(err, ch) {
-    if (err) res.status(500).send("error");
+  Channel.findByIdAndRemove({ _id: idChannel }).exec(function(err, ch) {
+    if (err) {
+      console.log(err)
+      res.status(500).send("error");
+    }
     else if (!ch) {
+      console.log("channel  not found")
       res.status(404).json({ success: false, msg: "channel not found" });
     } else {
       Item.deleteMany({ channel: idChannel }, function(err) {
-        if (err) res.status(500).send("error");
+        if (err){
+          console.log(err)
+          res.status(500).send("error");
+        } 
         else {
           const response = {
             message: "channel successfully deleted",

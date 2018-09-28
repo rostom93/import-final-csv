@@ -129,7 +129,7 @@ router
             } else {
               var channel = result["rss"]["channel"];
               channel.valid = true;
-              xmlchannel = verify.verifyAndCreateChannelxml(channel);
+              xmlchannel = verify.verifyAndCreateChannel(channel[0]);
               Channel.findOne({ title: channel[0].title }, function(err, ch) {
                 if (ch) {
                   xmlchannel._id = ch._id;

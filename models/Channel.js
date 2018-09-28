@@ -6,16 +6,17 @@ var channelSchema = new Schema({
   link: String,
   description: String,
   language: String,
+  //or release_date
   pubDate: {type:Date,default:new Date()},
   author:String,
   summary:String,
   subtitle:String,
+  //or big_cover_url or small_cover_url
   image:String,
   cid: String,
   new_cid: String,
   channel_id: String,
   Provider_id: String,
-  release_date: { type: Date, required: true, default: new Date() },
   episode_count: Number,
   play_count: Number,
   sub_count: Number,
@@ -23,12 +24,7 @@ var channelSchema = new Schema({
   categories: String,
   keywords: String,
   tags: String,
-  rss_url: {
-    type: String,
-    required: true
-  },
-  small_cover_url: String,
-  big_cover_url: String,
+  rss_url: String,
   valid:Boolean,
   errorsMsg:[{
     code :Number,

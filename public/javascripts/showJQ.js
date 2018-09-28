@@ -80,7 +80,6 @@ $(document).ready(function() {
       url: "/show/delete/" + id,
       type: "DELETE",
       success: function(result) {
-        
         succ();
       },
       error: function(xhr, status, error) {
