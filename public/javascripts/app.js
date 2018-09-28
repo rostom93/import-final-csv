@@ -1,74 +1,4 @@
-function format(errors) {
-  var string = "";
-  if(errors.length!=0){
-      string +=
-      "<div class='details-container'>" +
-      "<table cellpadding='5' cellspacing='0' border='0' class='details-table'>";
-    $.each(errors, function(index, error) {
-      string +=
-        "<tr class='err'>" +
-        "<td>Error code: </td>" +
-        "<td>" +
-        error.code +
-        "</td>" +
-        "<td>" +
-        error.msg +
-        "</td>" +
-        "</tr>";
-    });
-    string += "</table></div>";
-  }
-  else{
-    string+="<p class='noerr'>this channel does not have any errors</p>";
-  }
- 
- 
-  return string;
-}
-$(document).ready(function() {
-  $(document)
-    .ajaxStart(function() {
-      $(".contentmain").hide();
-      $(".se-pre-con").show();
-      $("#messageeXml").hide();
-    })
-    .ajaxStop(function() {
-      $(".se-pre-con").hide();
-    });
-  var dt = $("#table").DataTable({
-    columns: [
-      {
-        className: "details-control",
-        defaultContent: "",
-        data: null,
-        orderable: false
-      },
-      {},
-      {},
-      {},
-      {},
-      {},
-      {}
-    ]
-  });
 
-  $("#table tbody").on("click", "tr td.details-control", function() {
-    var tr = $(this).closest("tr");
-    var id = tr.attr("id");
-    $.get("show/getErrors/" + id, function(data) {
-      var errors = data["data"];
-      var row = dt.row(tr);
-      if (row.child.isShown()) {
-        tr.removeClass("details");
-        row.child.hide();
-      } else {
-        tr.addClass( 'details' );
-        row.child(format(errors)).show();
-      }
-    });
-  });
- 
-});
 
 $(function() {
   $("input[name=inputfile]").change(function() {
@@ -125,9 +55,5 @@ $(function() {
     });
   });
 
-  /*
-  
-  $(".showitemxml").on("click", function(e) {
-    $(location).attr("href", "showxml/showitem/" + this.id);
-  });*/
 });
+

@@ -1,6 +1,5 @@
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
-const radio = require("./Radio");
 const channel = require("./Channel");
 
 require("mongoose-type-url");

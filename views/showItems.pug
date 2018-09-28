@@ -2,36 +2,42 @@ extends layout
 
 block content
   .main.container
-    .row
-        h1.display-4.m-b-2#listitem Channel #{channelTitle}: List of Items
-        a#xmllink(href="/show#loaded") return
-    br
-    if channelTitle
-         table.table.table-bordered#table
+    .contentcsv
+        .row
+            h1.display-4.m-b-2#listitem Channel #{channelTitle}: List of Items
+            a#xmllink(href="/show#loaded") return
+        br
+        if channelTitle
+            table.table.table-bordered#table
 
-            thead
+                thead
 
-                tr
-                    th #
+                    tr
+                        th 
 
-                    th Title
+                        th Title
 
-                    th Author
+                        th Author
 
-                    th Release date
+                        th Release date
 
-                    th Description
+                        th Actions
+                each item, i in items
+                    tr(id=item['_id'])
+                        td#deetail
+                        td #{item['title']}
+                        td #{item['author']}
+                        td #{item['pubDate']}
+                        td.action
+                            a(href='#')
+                                i.fa.fa-pencil.edit(aria-hidden='true' class="fas fa-stroopwafel fa-lg") 
+                            | &nbsp;&nbsp;&nbsp; 
+                            | &nbsp;&nbsp;&nbsp;
+                            | &nbsp;&nbsp;&nbsp;
+                            a(href='#')
+                                i.fa.fa-trash.delete(aria-hidden='true' class="fas fa-stroopwafel fa-lg") 
+                            
+    .se-pre-con
 
-                    th keywords
-
-                    th Summary
-            each item, i in items
-                tr.showitem(id=item['_id'])
-                    td #{i+1}
-                    td #{item['title']}
-                    td #{item['author']}
-                    td #{item['pubDate']}
-                    td #{item['description']}
-                    td #{item['keywords']}
-                    td #{item['summary']}
+    script(src="/javascripts/showItemsJQ.js")
     

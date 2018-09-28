@@ -21,24 +21,31 @@ block content
 
                     th category
 
-                    th keywords
-
                     th Actions
             each channel, i in channels
                 tr(id=channel['_id'])
                     td#deetail
-                    td  #{channel['title']}
+                    td #{channel['title']}
                     td #{channel['author']}
                     td #{channel['release_date']}
                     td #{channel['categories']}
-                    td #{channel['keywords']}
-                    td 
-                        a(href='show/showitem/'+channel['_id']) view items
+                    td.action
+                        a.view(href='showItems/'+channel['_id']) 
+                            i.fa.fa-th-list(aria-hidden='true' ) 
+                            | &nbsp;&nbsp;&nbsp;view items
+                        br
+                        br
+                        i.fa.fa-pencil.edit(aria-hidden='true' class="fas fa-stroopwafel fa-lg") 
+                        | &nbsp;&nbsp;&nbsp; 
+                        | &nbsp;&nbsp;&nbsp;
+                        | &nbsp;&nbsp;&nbsp;
+                        i.fa.fa-trash.delete(aria-hidden='true' class="fas fa-stroopwafel fa-lg") 
+                            
                         
                         
     .se-pre-con
    
-    script(src="/javascripts/loadingcsv.js")
+    script(src="/javascripts/showJQ.js")
         
                        
     

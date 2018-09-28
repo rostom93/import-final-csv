@@ -78,6 +78,9 @@ div {
   display: none;
   width: 100%;
 }
+.contentitem{
+  width: 100%;
+}
 .contentmain {
   width: 100%;
 }
@@ -88,11 +91,11 @@ div {
 td.details-control {
   background: url("../images/details_open.png") no-repeat center center;
   cursor: pointer;
-  background-size: 20px;
+  background-size: 30px;
 }
 tr.details td.details-control {
   background: url("../images/details_close.png") no-repeat center center;
-  background-size: 20px;
+  background-size: 30px;
 }
 
 td[colspan] {
@@ -107,3 +110,22 @@ td[colspan] {
   color: green;
   font-size: 1.2em;
 }
+.action{
+  width: 150px!important;
+  padding: 0px;
+}
+.edit{
+  color: blue;
+  cursor: pointer;
+}
+.delete{
+  color: red;
+  cursor: pointer;
+}
+.view{
+  color: rgb(112, 53, 82);
+
+}
+
+
+

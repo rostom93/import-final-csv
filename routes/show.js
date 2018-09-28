@@ -16,33 +16,35 @@ router
       }
     });
   })
-  .get("/showitem/:id", function(req, res, next) {
+  router.get("/getErrors/:id", function(req, res, next) {
     var idChannel = req.param("id");
-
     Channel.findById(idChannel, function(err, channel) {
       if (err) throw err;
       else {
-        Item.find({ channel: idChannel }, function(err, items) {
-          if (err) throw err;
-          else
-            res.render("showItems", {
-              items: items,
-              channelTitle: channel.title
-            });
+        res.send({
+          data: channel.errorsMsg
         });
       }
     });
-  }).get("/getErrors/:id",function(req, res, next){
+  })
+  router.delete("/delete/:id",function(req, res, next){
     var idChannel = req.param("id");
-    Channel.findById(idChannel, function(err, channel) {
-      if (err) throw err;
-      else {
-       
-            res.send({
-              data:channel.errorsMsg
-            });
+    Channel.findByIdAndRemove(idChannel , function (err) {
+      if (err) res.status(500).send("error");
+      // deleted at most one tank document
+      else{
+        Item.deleteMany({channel: idChannel},function(err){
+          if (err) res.status(500).send("error");
+          else{
+            const response = {
+              message: "channel successfully deleted",
+              id: idChannel
+          };
+            res.send(response);
+          }
+        })
         
-      }
+      } 
     });
   })
 
